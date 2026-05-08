@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@layer base {
+  :root {
+    --bg: #e8e8e8;
+    --card: #f6f8fa;
+    --text-primary: #111111;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --input-bg: #f3f4f6;
+  }
+
+  .dark {
+    --bg: #111111;
+    --card: #222222;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --border: #2a2a2a;
+    --input-bg: #222222;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .bg-card {
+    background-color: var(--card);
+  }
+
+  .bg-card-alt {
+    background-color: var(--card-alt);
+  }
+
+  .bg-page {
+    background-color: var(--bg);
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .border-default {
+    border-color: var(--border);
+  }
+
+  .bg-input {
+    background-color: var(--input-bg);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hover-outline {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border);
+  }
+
+  .hover-outline:hover {
+    border-color: #edecec;
+    box-shadow: 0 0 0 4px #edecec;
+  }
+
+  .dark .hover-outline:hover {
+    border-color: #686868;
+    box-shadow: 0 0 0 4px #686868;
+  }
+
+  @keyframes hint-left {
+
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes hint-right {
+
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-hint-left {
+    animation: hint-left 2s infinite ease-in-out;
+  }
+
+  .animate-hint-right {
+    animation: hint-right 2s infinite ease-in-out;
+  }
+}
