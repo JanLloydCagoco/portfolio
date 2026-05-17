@@ -112,7 +112,7 @@ export default function GallerySection() {
                   alt={image.alt}
                   width={112}
                   height={112}
-                  className="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-input hover-outline transition-all duration-200"
+                  className="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-input transition-all duration-200"
                 />
               </div>
             ))}

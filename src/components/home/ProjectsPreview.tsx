@@ -14,7 +14,7 @@ export default function ProjectsPreview() {
         <SectionLabel text="Projects" />
         <Link
           href="/projects"
-          className="flex bg-white dark:bg-[#2b2b2b] items-center gap-1.5 text-sm font-medium text-primary dark:text-white border border-default dark:border-zinc-600 px-3 py-1.5 rounded-lg hover-outline transition-all duration-200"
+          className="flex glass-btn items-center gap-1.5 text-sm font-medium text-primary dark:text-white px-3 py-1.5 rounded-lg hover-outline transition-all duration-200"
         >
           View All
           <svg

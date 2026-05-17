@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
+import SpaceBackground from "@/components/ui/SpaceBackground";
 
 export const metadata: Metadata = {
   title: "Jan Lloyd Cagoco — Product Designer",
@@ -26,7 +27,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <div className="min-h-screen bg-page flex flex-col items-center px-4 py-6 gap-4">
+          <SpaceBackground />
+          <div className="min-h-screen flex flex-col items-center px-4 py-6 gap-4 relative z-10">
             <div className="sticky top-4 z-50 w-full max-w-[560px]">
               <Navbar />
             </div>

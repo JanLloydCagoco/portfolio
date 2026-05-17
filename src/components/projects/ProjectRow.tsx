@@ -9,23 +9,23 @@ export default function ProjectRow({ project }: ProjectRowProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-[#2b2b2b] border border-transparent dark:border-transparent shadow-sm hover-outline group transition-all duration-200"
+      className="flex items-center gap-4 p-4 rounded-2xl glass-sm shadow-sm hover-outline group transition-all duration-200"
     >
       {/* Avatar */}
       <div
-        className={`w-14 h-14 rounded-full ${project.avatarColor} flex items-center justify-center flex-shrink-0 ring-4 ring-gray-50 dark:ring-[#2a2a2a]`}
+        className={`w-11 h-11 rounded-full ${project.avatarColor} flex items-center justify-center flex-shrink-0 ring-3 ring-white/40 dark:ring-white/10`}
       >
-        <span className="text-lg font-bold text-white">
+        <span className="text-sm font-bold text-white">
           {project.avatarLabel}
         </span>
       </div>
 
       {/* Text */}
       <div className="flex-1 min-w-0">
-        <p className="text-lg font-medium text-primary truncate">
+        <p className="text-[15px] font-semibold text-primary truncate">
           {project.name}
         </p>
-        <p className="text-base text-secondary truncate mt-0.5">
+        <p className="text-[13px] text-secondary truncate mt-0.5">
           {project.tags.join(", ")}
         </p>
       </div>

@@ -14,7 +14,7 @@ export default function CopyEmailClient() {
   return (
     <button
       onClick={handleCopy}
-      className="flex items-center gap-1.5 text-sm font-medium text-black dark:text-white bg-gray-50 dark:bg-[#2b2b2b] dark:border dark:border-zinc-600 rounded-lg px-3 py-2 hover-outline transition-all duration-200"
+      className="flex items-center gap-1.5 text-sm font-medium text-black dark:text-white glass-btn rounded-lg px-3 py-2 hover-outline transition-all duration-200"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -80,28 +80,28 @@ export default function InquiryPage() {
   };
 
   return (
-    <div className="bg-white dark:bg-[#1a1a1a] dark:border dark:border-[#2a2a2a] shadow-sm min-h-[calc(100vh-120px)] p-2 flex flex-col gap-2 rounded-xl">
+    <div className="glass shadow-sm min-h-[calc(100vh-120px)] p-2 flex flex-col gap-2 rounded-xl">
       {/* Header — plain, no card */}
       <div className="p-6">
         {/* Top Row: Hire Me + Badge */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-5">
           <SectionLabel text="Hire Me" />
           <AvailableBadge />
         </div>
 
         {/* Heading & Subtitle */}
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-primary mb-1">
+          <h1 className="text-[28px] font-bold text-primary mb-1 tracking-tight">
             Design Inquiry
           </h1>
-          <p className="text-lg text-secondary mb-4">
+          <p className="text-[15px] text-secondary mb-4 leading-relaxed">
             Got an idea and need design help? Reach out now
           </p>
         </div>
       </div>
 
       {/* Form Card */}
-      <div className="bg-white dark:bg-[#1a1a1a] p-6">
+      <div className="p-6">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* Name + Email Row */}
           <div className="flex gap-4">
@@ -112,7 +112,7 @@ export default function InquiryPage() {
               onChange={handleChange}
               placeholder="Name"
               autoComplete="off"
-              className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-gray-200 dark:border-[#2a2a2a] focus:outline-none focus:border-gray-300 dark:focus:border-gray-600 transition-colors duration-200"
+              className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200"
             />
             <input
               type="email"
@@ -121,7 +121,7 @@ export default function InquiryPage() {
               onChange={handleChange}
               placeholder="Email Address"
               autoComplete="off"
-              className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-gray-200 dark:border-[#2a2a2a] focus:outline-none focus:border-gray-300 dark:focus:border-gray-600 transition-colors duration-200"
+              className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200"
             />
           </div>
 
@@ -132,7 +132,7 @@ export default function InquiryPage() {
             onChange={handleChange}
             placeholder="Message"
             rows={7}
-            className="w-full bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-gray-200 dark:border-[#2a2a2a] focus:outline-none focus:border-gray-300 dark:focus:border-gray-600 transition-colors duration-200 resize-none"
+            className="w-full bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200 resize-none"
           />
 
           {/* Feedback */}
@@ -167,7 +167,7 @@ export default function InquiryPage() {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=cagocojanlloyd@gmail.com&su=Hire%20Inquiry%3A%20Let's%20Work%20Together"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-gray-50 dark:bg-[#222222] dark:border dark:border-zinc-600 text-primary dark:text-white text-sm font-semibold py-4 rounded-xl hover-outline transition-colors duration-200"
+              className="w-full flex items-center justify-center gap-2 glass-btn text-primary dark:text-white text-sm font-semibold py-4 rounded-xl hover-outline transition-colors duration-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

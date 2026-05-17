@@ -1,8 +1,10 @@
-"use client";
-
-import { useState } from "react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { TimelineItem } from "@/types";
+
+interface TimelineSectionProps {
+  title: string;
+  type: "work" | "education" | "achievements";
+}
 
 const timelineData: TimelineItem[] = [
   {
@@ -49,65 +51,46 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
-type TabType = "work" | "education" | "achievements";
-
-const tabs: { label: string; value: TabType }[] = [
-  { label: "Work", value: "work" },
-  { label: "Education", value: "education" },
-  { label: "Achievements", value: "achievements" },
-];
-
-export default function TimelineSection() {
-  const [activeTab, setActiveTab] = useState<TabType>("work");
-
-  const filtered = timelineData.filter((item) => item.type === activeTab);
+export default function TimelineSection({ title, type }: TimelineSectionProps) {
+  const filtered = timelineData.filter((item) => item.type === type);
 
   return (
     <>
       {/* Header Row */}
       <div className="flex items-center justify-between mb-4">
-        <SectionLabel text="Timeline" />
-        <div className="flex items-center gap-1 bg-white dark:bg-[#1a1a1a] rounded-xl p-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab.value}
-              onClick={() => setActiveTab(tab.value)}
-              className={`text-sm font-medium px-3 py-1.5 rounded-lg transition-colors duration-200 ${
-                activeTab === tab.value
-                  ? "bg-white dark:bg-[#2b2b2b] text-primary dark:text-white shadow-sm"
-                  : "text-secondary dark:text-secondary hover:text-primary dark:hover:text-white"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <SectionLabel text={title} />
       </div>
 
       {/* Timeline List */}
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-4">
         {filtered.map((item, index) => (
-          <div key={item.id} className="flex gap-3">
-            {/* Left — Dot + Line */}
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-input border border-default flex items-center justify-center flex-shrink-0">
-                <div className="w-2 h-2 rounded-full bg-gray-400" />
+          <div key={item.id} className="group relative flex gap-3 sm:gap-4 pb-3">
+            
+            {/* Left - Glass Node & Line */}
+            <div className="flex flex-col items-center pt-3.5">
+              <div className="w-3.5 h-3.5 rounded-full border border-black/10 dark:border-white/10 glass-sm z-10 flex items-center justify-center transition-all duration-300 group-hover:border-black/20 dark:group-hover:border-white/30">
+                <div className="w-1.5 h-1.5 rounded-full bg-black/30 dark:bg-white/40 group-hover:bg-black/80 dark:group-hover:bg-white/90 transition-colors duration-300" />
               </div>
               {index < filtered.length - 1 && (
-                <div
-                  className="w-px bg-gray-200 dark:bg-[#2a2a2a] flex-1"
-                  style={{ minHeight: "24px" }}
-                />
+                <div className="w-px flex-1 bg-gradient-to-b from-black/10 dark:from-white/10 via-black/5 dark:via-white/5 to-transparent mt-1.5 mb-1" style={{ minHeight: "2rem" }} />
               )}
             </div>
 
-            {/* Right — Content */}
-            <div className="pb-5">
-              <p className="text-sm font-semibold text-primary leading-tight">
-                {item.title}
-              </p>
-              <p className="text-sm text-secondary mt-0.5">{item.subtitle}</p>
-              <p className="text-sm text-secondary mt-0.5">{item.period}</p>
+            {/* Right - Clean Glass Card */}
+            <div className="flex-1">
+              <div className="glass-sm p-3.5 rounded-xl border border-transparent hover:border-black/5 dark:hover:border-white/10 hover:bg-white/30 dark:hover:bg-white/5 transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-1">
+                  <h3 className="text-sm font-semibold text-primary transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <span className="text-[11px] font-medium text-secondary bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded border border-black/5 dark:border-white/5">
+                    {item.period}
+                  </span>
+                </div>
+                <p className="text-[13px] text-secondary/80 leading-snug">
+                  {item.subtitle}
+                </p>
+              </div>
             </div>
           </div>
         ))}

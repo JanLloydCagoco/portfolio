@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full">
-      <div className="bg-white dark:bg-[#1a1a1a] border border-default dark:border-[#2a2a2a] rounded-xl px-4 py-3 flex items-center justify-between shadow-sm transition-colors duration-300">
+      <div className="glass dark:navbar-dark-glass rounded-xl px-4 py-3 flex items-center justify-between transition-colors duration-300">
         {/* Left — Nav Icons */}
         <div
           className="relative flex items-center gap-2"
@@ -23,7 +23,7 @@ export default function Navbar() {
         >
           {/* Sliding background pill — moves between tabs */}
           <div
-            className={`absolute w-8 h-8 rounded-2xl bg-gray-100 dark:bg-[#2a2a2a] transition-all duration-200 ease-out ${displayTab === null
+            className={`absolute w-8 h-8 rounded-2xl bg-white/50 dark:bg-[#2a2a2a] transition-all duration-200 ease-out ${displayTab === null
                 ? "opacity-0 scale-90"
                 : displayTab === "home"
                   ? "translate-x-0 opacity-100 scale-100"

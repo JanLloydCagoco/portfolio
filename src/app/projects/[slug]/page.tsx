@@ -31,7 +31,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const otherProjects = getOtherProjects(slug);
 
   return (
-    <div className="bg-white dark:bg-[#1a1a1a] dark:border dark:border-[#2a2a2a] shadow-sm min-h-screen p-2 flex flex-col gap-2 rounded-xl">
+    <div className="glass dark:bg-[#1a1a1a] dark:border dark:border-[#2a2a2a] shadow-sm min-h-screen p-2 flex flex-col gap-2 rounded-xl">
       {/* Meta Table */}
       <div className="bg-card rounded-xl overflow-hidden">
         <ProjectMeta project={project} />
@@ -49,10 +49,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-bold text-primary mb-4">{project.name}</h1>
+        <h1 className="text-[28px] font-bold text-primary mb-3 tracking-tight">{project.name}</h1>
 
         {/* Description */}
-        <p className="text-lg text-secondary mb-6 leading-relaxed">
+        <p className="text-[15px] text-secondary mb-6 leading-relaxed">
           {project.description}
         </p>
 
@@ -61,7 +61,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           href={project.websiteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-black dark:bg-[#2b2b2b] text-white dark:text-white text-sm font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity duration-200 mb-6"
+          className="inline-flex items-center gap-2 bg-black dark:bg-[#2b2b2b] text-white dark:text-white text-sm font-semibold px-5 py-3 rounded-xl hover-outline transition-all duration-200 mb-6"
         >
           Visit Website
           <svg
@@ -99,7 +99,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <SectionLabel text="Other Projects" />
             <Link
               href="/projects"
-              className="flex bg-white dark:bg-[#2b2b2b] items-center gap-1.5 text-sm font-medium text-primary border border-default px-3 py-1.5 rounded-lg hover-outline transition-all duration-200"
+              className="flex glass-btn items-center gap-1.5 text-sm font-medium text-primary px-3 py-1.5 rounded-lg hover-outline"
             >
               View All
               <svg

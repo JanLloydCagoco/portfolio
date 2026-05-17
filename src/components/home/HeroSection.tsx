@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <>
       {/* Top Row — Label + Available Badge */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-5">
         <SectionLabel text="Product Designer" />
         <AvailableBadge />
       </div>
@@ -16,10 +16,10 @@ export default function HeroSection() {
       {/* Main Row — Text + Avatar */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-primary mb-2">
+          <h1 className="text-[28px] font-bold text-primary mb-2 tracking-tight">
             I'm Jan Lloyd
           </h1>
-          <p className="text-lg text-secondary mb-5">
+          <p className="text-[15px] text-secondary mb-5 leading-relaxed">
             Product designer from Caloocan, PH.
             <br />
             Currently designing at Rectangle.
@@ -35,7 +35,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-[#2b2b2b] dark:border dark:border-zinc-600 hover-outline transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-lg glass-btn hover-outline transition-all duration-200"
             >
               <svg
                 className="w-5 h-5 text-black dark:text-white"
@@ -52,7 +52,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-50 dark:bg-[#2b2b2b] dark:border dark:border-zinc-600 hover-outline transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-lg glass-btn hover-outline transition-all duration-200"
             >
               <svg
                 className="w-5 h-5 text-black dark:text-white"
@@ -66,7 +66,7 @@ export default function HeroSection() {
         </div>
 
         {/* Avatar */}
-        <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100 dark:bg-[#2a2a2a]">
+        <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 glass-btn">
           <Image
             src="/avatar.png"
             alt="Jan Lloyd Cagoco"
