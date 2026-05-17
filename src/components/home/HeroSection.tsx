@@ -2,32 +2,46 @@ import Image from "next/image";
 import SectionCard from "@/components/ui/SectionCard";
 import SectionLabel from "@/components/ui/SectionLabel";
 import AvailableBadge from "@/components/ui/AvailableBadge";
-import CopyEmailClient from "./CopyEmailClient";
+import DownloadResume from "./DownloadResume";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
     <>
       {/* Top Row — Label + Available Badge */}
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between mb-8 sm:mb-5">
         <SectionLabel text="Product Designer" />
         <AvailableBadge />
       </div>
 
-      {/* Main Row — Text + Avatar */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex-1">
-          <h1 className="text-[28px] font-bold text-primary mb-2 tracking-tight">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-8 sm:gap-4 text-center sm:text-left pt-2 pb-2">
+        {/* Avatar (Top on mobile, Right on desktop) */}
+        <div className="order-first sm:order-last rounded-full p-2 bg-black/5 dark:bg-white/5 mx-auto sm:mx-0">
+          <div className="w-[120px] h-[120px] rounded-full overflow-hidden flex-shrink-0 border-4 border-white dark:border-[#1a1a1a] shadow-sm sm:shadow-none bg-white dark:bg-[#1a1a1a]">
+            <Image
+              src="/avatar.png"
+              alt="Jan Lloyd Cagoco"
+              width={120}
+              height={120}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
+        </div>
+
+        <div className="flex-1 flex flex-col items-center sm:items-start">
+          <h1 className="text-[32px] sm:text-[36px] font-bold text-primary mb-3 sm:mb-2 tracking-tight">
             I'm Jan Lloyd
           </h1>
-          <p className="text-[15px] text-secondary mb-5 leading-relaxed">
+          <p className="text-[16px] sm:text-[17px] text-secondary mb-6 sm:mb-5 leading-relaxed max-w-sm">
             Product designer from Caloocan, PH.
             <br />
             Currently designing at Rectangle.
           </p>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-2 flex-wrap mb-3">
-            <CopyEmailClient />
+          <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 flex-wrap w-full mt-2">
+            <DownloadResume />
 
             {/* GitHub */}
             <a
@@ -35,7 +49,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="w-9 h-9 flex items-center justify-center rounded-lg glass-btn hover-outline transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-xl glass-btn hover-outline transition-all duration-200"
             >
               <svg
                 className="w-5 h-5 text-black dark:text-white"
@@ -52,7 +66,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="w-9 h-9 flex items-center justify-center rounded-lg glass-btn hover-outline transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-xl glass-btn hover-outline transition-all duration-200"
             >
               <svg
                 className="w-5 h-5 text-black dark:text-white"
@@ -65,17 +79,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Avatar */}
-        <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 glass-btn">
-          <Image
-            src="/avatar.png"
-            alt="Jan Lloyd Cagoco"
-            width={80}
-            height={80}
-            className="w-full h-full object-cover"
-            priority
-          />
-        </div>
+
       </div>
     </>
   );

@@ -76,21 +76,19 @@ export default function TimelineSection({ title, type }: TimelineSectionProps) {
               )}
             </div>
 
-            {/* Right - Clean Glass Card */}
-            <div className="flex-1">
-              <div className="glass-sm p-3.5 rounded-xl border border-transparent hover:border-black/5 dark:hover:border-white/10 hover:bg-white/30 dark:hover:bg-white/5 transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-1">
-                  <h3 className="text-sm font-semibold text-primary transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <span className="text-[11px] font-medium text-secondary bg-black/5 dark:bg-white/10 px-2 py-0.5 rounded border border-black/5 dark:border-white/5">
-                    {item.period}
-                  </span>
-                </div>
-                <p className="text-[13px] text-secondary/80 leading-snug">
-                  {item.subtitle}
-                </p>
+            {/* Right - Clean Text */}
+            <div className="flex-1 pt-1.5 pb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-1">
+                <h3 className="text-sm font-semibold text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <span className="text-[11px] font-medium text-secondary">
+                  {item.period}
+                </span>
               </div>
+              <p className="text-[13px] text-secondary/80 leading-snug mt-1">
+                {item.subtitle}
+              </p>
             </div>
           </div>
         ))}

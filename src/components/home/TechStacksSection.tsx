@@ -28,18 +28,18 @@ export default function TechStacksSection() {
           </svg>
         </Link>
       </div>
-      <div className="grid grid-cols-6 gap-3">
-        {allTechStacks.map((tech) => (
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
+        {allTechStacks.slice(0, 12).map((tech) => (
           <div
             key={tech.name}
             className="flex flex-col items-center gap-1 group"
           >
             <div
-              className={`w-12 h-12 rounded-xl glass-btn flex items-center justify-center transition-all duration-200 cursor-default`}
+              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl glass-btn flex items-center justify-center transition-all duration-200 cursor-default`}
             >
               {tech.icon}
             </div>
-            <span className="text-sm text-secondary text-center leading-tight">
+            <span className="text-[11px] sm:text-sm text-secondary text-center leading-tight">
               {tech.name}
             </span>
           </div>

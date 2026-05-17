@@ -105,7 +105,7 @@ export default function GallerySection() {
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-28 h-28 rounded-2xl overflow-hidden bg-input"
+                className="flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-input"
               >
                 <Image
                   src={image.src}

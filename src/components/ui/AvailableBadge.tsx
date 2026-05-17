@@ -5,7 +5,8 @@ export default function AvailableBadge() {
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
       </span>
-      AVAILABLE FOR WORK
+      <span className="hidden sm:inline">AVAILABLE FOR WORK</span>
+      <span className="sm:hidden">AVAILABLE</span>
     </span>
   );
 }

@@ -28,8 +28,8 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <SpaceBackground />
-          <div className="min-h-screen flex flex-col items-center px-4 py-6 gap-4 relative z-10">
-            <div className="sticky top-4 z-50 w-full max-w-[560px]">
+          <div className="min-h-screen flex flex-col items-center px-2 py-3 sm:px-4 sm:py-6 gap-3 sm:gap-4 relative z-10">
+            <div className="sticky top-3 sm:top-4 z-50 w-full max-w-[560px]">
               <Navbar />
             </div>
 

@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full">
-      <div className="glass dark:navbar-dark-glass rounded-xl px-4 py-3 flex items-center justify-between transition-colors duration-300">
+      <div className="glass dark:navbar-dark-glass rounded-3xl px-4 py-3 flex items-center justify-between transition-colors duration-300">
         {/* Left — Nav Icons */}
         <div
           className="relative flex items-center gap-2"
@@ -23,7 +23,7 @@ export default function Navbar() {
         >
           {/* Sliding background pill — moves between tabs */}
           <div
-            className={`absolute w-8 h-8 rounded-2xl bg-white/50 dark:bg-[#2a2a2a] transition-all duration-200 ease-out ${displayTab === null
+            className={`absolute w-8 h-8 rounded-xl bg-white/50 dark:bg-[#2a2a2a] transition-all duration-200 ease-out ${displayTab === null
                 ? "opacity-0 scale-90"
                 : displayTab === "home"
                   ? "translate-x-0 opacity-100 scale-100"
@@ -42,7 +42,7 @@ export default function Navbar() {
             <Link
               href="/"
               aria-label="Home"
-              className={`relative w-8 h-8 flex items-center justify-center rounded-2xl transition-colors duration-200 ${displayTab === "home" ? "text-primary dark:text-white" : "text-secondary dark:text-gray-500"
+              className={`relative w-8 h-8 flex items-center justify-center rounded-xl transition-colors duration-200 ${displayTab === "home" ? "text-primary dark:text-white" : "text-secondary dark:text-gray-500"
                 }`}
             >
               <svg
@@ -73,7 +73,7 @@ export default function Navbar() {
             <Link
               href="/projects"
               aria-label="Projects"
-              className={`relative w-8 h-8 flex items-center justify-center rounded-2xl transition-colors duration-200 ${displayTab === "projects" ? "text-primary dark:text-white" : "text-secondary dark:text-gray-500"
+              className={`relative w-8 h-8 flex items-center justify-center rounded-xl transition-colors duration-200 ${displayTab === "projects" ? "text-primary dark:text-white" : "text-secondary dark:text-gray-500"
                 }`}
             >
               <svg
@@ -99,7 +99,7 @@ export default function Navbar() {
           <DarkModeToggle />
           <Link
             href="/inquiry"
-            className="flex items-center gap-1.5 bg-black dark:bg-[#2b2b2b] text-white dark:text-white text-sm font-semibold px-4 py-2 rounded-lg hover-outline transition-all"
+            className="flex items-center gap-1.5 bg-black dark:bg-[#2b2b2b] text-white dark:text-white text-sm font-semibold px-4 py-2 rounded-xl hover-outline transition-all"
           >
             <span className="text-base">+</span>
             Hire Me
