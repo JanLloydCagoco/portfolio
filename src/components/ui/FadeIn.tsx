@@ -36,7 +36,7 @@ export default function FadeIn({
         y: 0,
         x: 0,
       }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true }}
       transition={{
         duration: 0.6,
         delay: delay,

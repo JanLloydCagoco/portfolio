@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T06:31:00Z",
+  "title": "Design System: Jan Lloyd Cagoco — Calm Tactile Editorial Sheet",
+  "extensions": {
+    "colorMeta": {
+      "soft-paper": {
+        "role": "neutral",
+        "displayName": "Soft Paper",
+        "canonical": "#FAF8F5",
+        "tonalRamp": [
+          "#262522",
+          "#403E39",
+          "#5C5953",
+          "#7A766E",
+          "#9B978E",
+          "#BFBBAE",
+          "#E2DFD7",
+          "#FAF8F5"
+        ]
+      },
+      "paper-elevated": {
+        "role": "neutral",
+        "displayName": "Paper Elevated",
+        "canonical": "#F1EFEA",
+        "tonalRamp": [
+          "#242320",
+          "#3D3B36",
+          "#57544D",
+          "#747067",
+          "#948F84",
+          "#B7B2A7",
+          "#DAD6CE",
+          "#F1EFEA"
+        ]
+      },
+      "warm-ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#141413",
+        "tonalRamp": [
+          "#141413",
+          "#292927",
+          "#40403D",
+          "#595955",
+          "#757570",
+          "#969690",
+          "#BDBDB7",
+          "#E6E6E1"
+        ]
+      },
+      "paper-secondary": {
+        "role": "neutral",
+        "displayName": "Paper Secondary",
+        "canonical": "#585753",
+        "tonalRamp": [
+          "#1C1C1A",
+          "#2F2F2C",
+          "#43423F",
+          "#585753",
+          "#75746F",
+          "#96948E",
+          "#BCBAB3",
+          "#E5E4DF"
+        ]
+      },
+      "paper-muted": {
+        "role": "neutral",
+        "displayName": "Paper Muted",
+        "canonical": "#706E69",
+        "tonalRamp": [
+          "#1E1D1C",
+          "#33322F",
+          "#4F4D49",
+          "#706E69",
+          "#8C8A84",
+          "#ABA9A3",
+          "#CCCAC4",
+          "#ECEAE6"
+        ]
+      },
+      "cobalt-inquire": {
+        "role": "primary",
+        "displayName": "Cobalt Inquire",
+        "canonical": "#2563EB",
+        "tonalRamp": [
+          "#0F2963",
+          "#173E94",
+          "#1E50BF",
+          "#2563EB",
+          "#5182F0",
+          "#82A6F5",
+          "#B6CBFA",
+          "#E6EEFD"
+        ]
+      },
+      "soft-graphite": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "#111214",
+        "tonalRamp": [
+          "#111214",
+          "#212327",
+          "#363940",
+          "#4E525C",
+          "#696E7B",
+          "#8A909E",
+          "#B3B7C2",
+          "#E2E4E9"
+        ]
+      },
+      "graphite-elevated": {
+        "role": "neutral",
+        "displayName": "Graphite Elevated",
+        "canonical": "#181A1E",
+        "tonalRamp": [
+          "#0D0E10",
+          "#181A1E",
+          "#2B2F36",
+          "#424852",
+          "#5C6472",
+          "#7D8594",
+          "#A6ADBA",
+          "#DCE0E6"
+        ]
+      },
+      "chalk-ink": {
+        "role": "neutral",
+        "displayName": "Chalk Ink",
+        "canonical": "#EDEDEB",
+        "tonalRamp": [
+          "#252524",
+          "#3F3F3D",
+          "#5B5B58",
+          "#797975",
+          "#999995",
+          "#C2C2BD",
+          "#EDEDEB",
+          "#F8F8F7"
+        ]
+      },
+      "graphite-secondary": {
+        "role": "neutral",
+        "displayName": "Graphite Secondary",
+        "canonical": "#9A9CA2",
+        "tonalRamp": [
+          "#1D1E20",
+          "#323438",
+          "#4B4D54",
+          "#696C75",
+          "#848791",
+          "#9A9CA2",
+          "#C2C3C8",
+          "#E7E8EA"
+        ]
+      },
+      "graphite-muted": {
+        "role": "neutral",
+        "displayName": "Graphite Muted",
+        "canonical": "#7C7F87",
+        "tonalRamp": [
+          "#1B1C1E",
+          "#2F3135",
+          "#474950",
+          "#61646D",
+          "#7C7F87",
+          "#9DA0A7",
+          "#C1C3C8",
+          "#E6E7EA"
+        ]
+      },
+      "electric-cobalt": {
+        "role": "primary",
+        "displayName": "Electric Cobalt",
+        "canonical": "#3B82F6",
+        "tonalRamp": [
+          "#102854",
+          "#1C438A",
+          "#2B62C2",
+          "#3B82F6",
+          "#669DF8",
+          "#94BCFA",
+          "#C2DAFC",
+          "#EBF3FE"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Standalone project case study title on /projects/[slug] (40px)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Desktop page headings on /projects, /tech, and /inquiry (36px)."
+      },
+      "title-xl": {
+        "displayName": "Title XL",
+        "purpose": "Slide-over modal headings on desktop and mobile case study titles (32px)."
+      },
+      "title-lg": {
+        "displayName": "Title LG",
+        "purpose": "Mobile route headings and slide-over modal titles (28px)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Next-project navigation links on /projects/[slug] (24px)."
+      },
+      "subtitle-lg": {
+        "displayName": "Subtitle LG",
+        "purpose": "Sticky profile column name (Jan Lloyd Cagoco) and catalog project headings (20px)."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Type specimen display sample inside UI mockups (18px)."
+      },
+      "subtitle-sm": {
+        "displayName": "Subtitle SM",
+        "purpose": "Home project card titles and contact availability prompt (17px)."
+      },
+      "body-lg": {
+        "displayName": "Body LG",
+        "purpose": "Lead project summary on /projects/[slug] (16px)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base document copy, experience titles, and standalone form inputs (15px)."
+      },
+      "body-sm": {
+        "displayName": "Body SM",
+        "purpose": "Project card descriptions, role subtitles, and drawer form inputs (14px)."
+      },
+      "ledger": {
+        "displayName": "Ledger",
+        "purpose": "Lowercase numbered section headers (01–04), primary buttons, and stack pills (13px)."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Project tag chips, modal header buttons, and metadata labels (12px)."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Email copy button, provenance captions, and mockup header titles (11px)."
+      },
+      "mockup-ui": {
+        "displayName": "Mockup UI",
+        "purpose": "SYNTHETIC STAND-IN badge and internal UI device mockup labels (10px)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-mockup",
+        "value": "0 10px 28px -6px rgba(20, 20, 19, 0.10), 0 2px 6px -1px rgba(20, 20, 19, 0.05)",
+        "purpose": "Soft physical elevation under the SaaS browser and mobile phone mockups inside .halftone-well."
+      },
+      {
+        "name": "shadow-tactical",
+        "value": "0 12px 32px -8px rgba(20, 20, 19, 0.08), 0 4px 12px -2px rgba(20, 20, 19, 0.04)",
+        "purpose": "Slide-over modal panel shadow separating the case study / inquiry sheet from the fluted-glass curtain."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-editorial",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Smooth exponential ease-out for mockup hover lift (-4px), button states, and modal transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Inquire Primary Button",
+      "kind": "button",
+      "refersTo": "button-inquire",
+      "description": "Primary Cobalt CTA button with 4px radius used for Inquire, Start an Inquiry, and Send Inquiry.",
+      "html": "<button class=\"ds-btn-inquire\" type=\"button\"><span>Inquire</span><span>→</span></button>",
+      "css": ".ds-btn-inquire { display: inline-flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 148px; background-color: var(--accent, #2563EB); color: #FFFFFF; font-family: 'PP Neue Montreal', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 16px; border: none; border-radius: 4px; cursor: pointer; transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-inquire:hover { opacity: 0.92; } .ds-btn-inquire:active { transform: translateY(0.5px); } .ds-btn-inquire:focus-visible { outline: 1.5px solid var(--accent, #2563EB); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Surface Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Soft hairline-bordered button over Paper/Graphite Elevated for Resume PDF download and modal controls.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\"><span>Resume PDF</span><span>↓</span></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 148px; background-color: var(--bg-elevated, #F1EFEA); color: var(--text-primary, #141413); font-family: 'PP Neue Montreal', sans-serif; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; padding: 8px 12px; border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); border-radius: 4px; cursor: pointer; transition: background-color 0.15s ease; } .ds-btn-secondary:hover { background-color: #E7E4DD; } .ds-btn-secondary:focus-visible { outline: 1.5px solid var(--accent, #2563EB); outline-offset: 2px; }"
+    },
+    {
+      "name": "Stack Tool Pill",
+      "kind": "chip",
+      "refersTo": "stack-pill",
+      "description": "Compact 4px-radius inline pill displaying a tool icon and name inside 03 — stack.",
+      "html": "<span class=\"ds-stack-pill\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"3\"/></svg><span>Figma</span></span>",
+      "css": ".ds-stack-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 4px; background-color: var(--bg-elevated, #F1EFEA); border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); font-family: 'PP Neue Montreal', sans-serif; font-size: 13px; color: var(--text-primary, #141413); } .ds-stack-pill svg { color: var(--text-secondary, #585753); }"
+    },
+    {
+      "name": "Halftone Project Preview Well",
+      "kind": "card",
+      "refersTo": "project-card-well",
+      "description": "6px-radius stippled halftone well housing a crisp elevated UI device mockup and discreet SYNTHETIC STAND-IN badge.",
+      "html": "<div class=\"ds-project-well\"><span class=\"ds-standin\">SYNTHETIC STAND-IN</span><div class=\"ds-mockup-window\"><div class=\"ds-mockup-bar\"><span class=\"ds-dot\"></span><span class=\"ds-dot\"></span><span class=\"ds-dot\"></span></div><div class=\"ds-mockup-body\"><strong>Product Overview</strong><span>24.8k Active Users · +14.2%</span></div></div></div>",
+      "css": ".ds-project-well { position: relative; padding: 24px; border-radius: 6px; border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); background-color: var(--bg-elevated, #F1EFEA); background-image: radial-gradient(rgba(20, 20, 19, 0.065) 1px, transparent 1px); background-size: 12px 12px; font-family: 'PP Neue Montreal', sans-serif; } .ds-standin { position: absolute; top: 10px; right: 10px; padding: 2px 6px; border-radius: 3px; background: var(--bg, #FAF8F5); border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); font-size: 10px; font-weight: 500; color: var(--text-muted, #706E69); } .ds-mockup-window { border-radius: 6px; background: var(--bg, #FAF8F5); border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); box-shadow: 0 10px 28px -6px rgba(20, 20, 19, 0.10); overflow: hidden; } .ds-mockup-bar { display: flex; gap: 5px; padding: 8px 12px; border-bottom: 1px solid var(--border, rgba(20, 20, 19, 0.08)); background: var(--bg-elevated, #F1EFEA); } .ds-dot { width: 7px; height: 7px; border-radius: 9999px; background: rgba(20, 20, 19, 0.18); } .ds-mockup-body { display: flex; flex-direction: column; gap: 4px; padding: 16px; font-size: 12px; color: var(--text-secondary, #585753); } .ds-mockup-body strong { font-size: 14px; color: var(--text-primary, #141413); }"
+    },
+    {
+      "name": "Editorial Form Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Clean 4px-radius form input with soft elevated fill and Cobalt focus border.",
+      "html": "<label class=\"ds-input-group\"><span class=\"ds-input-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"name@company.com\" /></label>",
+      "css": ".ds-input-group { display: flex; flex-direction: column; gap: 6px; font-family: 'PP Neue Montreal', sans-serif; } .ds-input-label { font-size: 13px; font-weight: 500; color: var(--text-secondary, #585753); } .ds-input { width: 100%; border-radius: 4px; background-color: var(--bg-elevated, #F1EFEA); border: 1px solid var(--border, rgba(20, 20, 19, 0.08)); padding: 10px 14px; font-family: inherit; font-size: 14px; color: var(--text-primary, #141413); transition: border-color 0.15s ease; } .ds-input::placeholder { color: var(--text-muted, #706E69); } .ds-input:focus { outline: none; border-color: var(--accent, #2563EB); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Tactical Optical Desk & Cartographic Ground",
+    "overview": "The portfolio of Jan Lloyd Cagoco (Product Designer & Associate Developer at LGU Baggao) is structured as a single unified editorial shell pairing a sticky left identity rail across a generous negative space gulf with an authored Baggao cartographic banner, tactile 3-card certification stack, and real municipal engineering records.\n\nEvery route (/, /projects, /experiences, /stack, /certifications, /projects/[slug], /inquiry) shares the exact same spatial frame: an unbordered left identity and navigation rail (210px wide) separated across a generous negative space gulf (lg:gap-28 xl:gap-36) from a focused reading column (max-w-[720px]). Horizontal top navigation bars and footer strips are completely discarded in favor of architectural quietness.",
+    "keyCharacteristics": [
+      "Unbordered left sidebar with generous negative space separation (lg:gap-28 xl:gap-36).",
+      "Active navigation flanked by optical directional arrows (->Projects<-) using Hugeicons.",
+      "Custom brand cartography of LGU Baggao with downward gradient fade mask.",
+      "Tactile 3-card certification peek stack with Framer Motion spring physics.",
+      "Two first-class color themes (Soft Paper Light / Soft Graphite Dark) plus live OS System mode.",
+      "Zero decorative lines above buttons, zero eyebrows, zero filler microcopy."
+    ],
+    "rules": [
+      {
+        "name": "The First-Class Theme Rule",
+        "body": "Light and Dark modes are co-equal citizens. Every component binds to CSS tokens without color flashing or unstyled states.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rarity of Cobalt Rule",
+        "body": "Cobalt accent is used on ≤5% of any screen. Its rarity makes it authoritative for active tabs, focus indicators, and verified links.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Number Rule",
+        "body": "All years, coordinates, lot numerals, and dates strictly enforce tabular numerals (fontFeature: 'tnum' 1 or tabular-nums) to preserve optical column alignments.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "Section headings and page headers stand on their own weight. No kicker or eyebrow text may precede a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces never carry heavy drop shadows at rest. Shadow is reserved strictly for layered card stacks and active floating states.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain the unbordered left identity rail and generous whitespace gulf (lg:gap-28 xl:gap-36) across every route.",
+      "Do preserve the active navigation bracket syntax (->Projects<-) with Hugeicons ArrowRight01Icon and ArrowLeft01Icon.",
+      "Do use tabular numbers (tabular-nums) for all dates, coordinates, and metrics.",
+      "Do label synthetic placeholder visuals discreetly with SYNTHETIC.",
+      "Do support full keyboard navigation and prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't add horizontal top navigation bars or bottom footer strips.",
+      "Don't add eyebrow or kicker labels above headings.",
+      "Don't add decorative lines or rules immediately above buttons.",
+      "Don't use gradient text or colored border-left accents.",
+      "Don't invent artificial employers, awards, or metrics."
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["maplibre-gl"],
   images: {
     remotePatterns: [
       {
@@ -8,6 +9,15 @@ const nextConfig: NextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/tech",
+        destination: "/stack",
+        permanent: true,
+      },
+    ];
   },
   async headers() {
     return [

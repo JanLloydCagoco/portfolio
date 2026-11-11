@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import SectionLabel from "@/components/ui/SectionLabel";
-import AvailableBadge from "@/components/ui/AvailableBadge";
-import Footer from "@/components/layout/Footer";
-import FadeIn from "@/components/ui/FadeIn";
+import { ArrowRight01Icon, ArrowDown01Icon } from "@/lib/icons";
 
 interface FormState {
   name: string;
   email: string;
+  subject: string;
   message: string;
+}
+
+interface FieldErrors {
+  name?: string;
+  email?: string;
+  message?: string;
 }
 
 interface SubmitState {
@@ -21,9 +25,11 @@ export default function InquiryPage() {
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
 
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [submit, setSubmit] = useState<SubmitState>({
     status: "idle",
     message: "",
@@ -32,30 +38,53 @@ export default function InquiryPage() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FieldErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setSubmit({ status: "error", message: "Please fill in all fields." });
-      return;
+    const nextErrors: FieldErrors = {};
+    if (!form.name.trim()) {
+      nextErrors.name = "Enter your name.";
     }
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
-      setSubmit({ status: "error", message: "Please enter a valid email." });
+    if (!form.email.trim()) {
+      nextErrors.email = "Enter your email address.";
+    } else if (!emailRegex.test(form.email)) {
+      nextErrors.email = "Enter a valid email address (e.g. name@domain.com).";
+    }
+    if (!form.message.trim()) {
+      nextErrors.message =
+        "Include project context, role scope, or timeline.";
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      setSubmit({ status: "idle", message: "" });
       return;
     }
 
+    setErrors({});
     setSubmit({ status: "loading", message: "" });
 
     try {
+      const payloadMessage = form.subject.trim()
+        ? `Subject: ${form.subject.trim()}\n\n${form.message}`
+        : form.message;
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: payloadMessage,
+        }),
       });
 
       const data = await res.json();
@@ -63,140 +92,191 @@ export default function InquiryPage() {
       if (res.ok) {
         setSubmit({
           status: "success",
-          message: "Message sent! I'll get back to you as soon as possible.",
+          message: "Message sent. Jan Lloyd will respond shortly.",
         });
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", subject: "", message: "" });
       } else {
         setSubmit({
           status: "error",
-          message: data.error || "Something went wrong. Please try again.",
+          message:
+            data.error ||
+            "Unable to send message. Please try again or email cagocojanlloyd@gmail.com.",
         });
       }
     } catch {
       setSubmit({
         status: "error",
-        message: "Network error. Please try again.",
+        message:
+          "Network error. Please try again or email cagocojanlloyd@gmail.com.",
       });
     }
   };
 
-  return (
-    <div className="glass shadow-sm min-h-[calc(100vh-100px)] p-2 flex flex-col gap-2 rounded-3xl">
-      {/* Header — plain, no card */}
-      <FadeIn delay={0.1}>
-        <div className="p-6">
-          {/* Top Row: Hire Me + Badge */}
-          <div className="flex items-center justify-between mb-5">
-            <SectionLabel text="Hire Me" />
-            <AvailableBadge />
-          </div>
+  const isSubmitting = submit.status === "loading";
 
-          {/* Heading & Subtitle */}
-          <div className="flex-1">
-            <h1 className="text-[32px] sm:text-[36px] font-bold text-primary mb-1 tracking-tight">
-              Design Inquiry
-            </h1>
-            <p className="text-[16px] sm:text-[17px] text-secondary mb-4 leading-relaxed">
-              Got an idea and need design help? Reach out now
-            </p>
+  return (
+    <div className="w-full space-y-10">
+      {/* Header */}
+      <div className="space-y-8">
+        <h1 className="font-pixel text-[26px] sm:text-[28px] leading-none text-primary lowercase">
+          inquire
+        </h1>
+        <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed">
+          Available for product design roles, design systems engineering, and select technical consulting initiatives.
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        {/* Contact Info Pills */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3.5 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/50">
+            <div className="text-muted text-[11px] font-mono">DIRECT EMAIL</div>
+            <a
+              href="mailto:cagocojanlloyd@gmail.com"
+              className="text-primary font-medium hover:underline text-[13px] mt-0.5 truncate block"
+            >
+              cagocojanlloyd@gmail.com
+            </a>
+          </div>
+          <div className="p-3.5 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/50">
+            <div className="text-muted text-[11px] font-mono">LOCATION</div>
+            <div className="text-primary font-medium text-[13px] mt-0.5">
+              Baggao, Cagayan, PH
+            </div>
+          </div>
+          <div className="p-3.5 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/50">
+            <div className="text-muted text-[11px] font-mono">CURRENT ROLE</div>
+            <div className="text-primary font-medium text-[13px] mt-0.5">
+              Associate Developer · LGU Baggao
+            </div>
           </div>
         </div>
-      </FadeIn>
 
-      {/* Form Card */}
-      <FadeIn delay={0.2}>
-        <div className="p-6">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {/* Name + Email Row */}
-            <div className="flex flex-col sm:flex-row gap-4">
+        {/* Clean Form */}
+        <form onSubmit={handleSubmit} noValidate className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="inquiry-name"
+                className="block text-[13px] font-medium text-secondary mb-1.5"
+              >
+                Name
+              </label>
               <input
+                id="inquiry-name"
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Name"
-                autoComplete="off"
-                className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200"
+                placeholder="Your name"
+                autoComplete="name"
+                className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] px-3.5 py-2.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors"
               />
+              {errors.name && (
+                <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
+                  {errors.name}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="inquiry-email"
+                className="block text-[13px] font-medium text-secondary mb-1.5"
+              >
+                Email
+              </label>
               <input
+                id="inquiry-email"
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Email Address"
-                autoComplete="off"
-                className="flex-1 bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200"
+                placeholder="name@company.com"
+                autoComplete="email"
+                className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] px-3.5 py-2.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors"
               />
+              {errors.email && (
+                <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
+                  {errors.email}
+                </p>
+              )}
             </div>
+          </div>
 
-            {/* Message */}
+          <div>
+            <label
+              htmlFor="inquiry-subject"
+              className="block text-[13px] font-medium text-secondary mb-1.5"
+            >
+              Subject (Optional)
+            </label>
+            <input
+              id="inquiry-subject"
+              type="text"
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+              placeholder="Product design role, public web application, or design system"
+              autoComplete="off"
+              className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] px-3.5 py-2.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="inquiry-message"
+              className="block text-[13px] font-medium text-secondary mb-1.5"
+            >
+              Message
+            </label>
             <textarea
+              id="inquiry-message"
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Message"
-              rows={7}
-              className="w-full bg-input text-gray-900 dark:text-white text-sm placeholder:text-gray-500 focus:placeholder:text-gray-300 dark:placeholder:text-gray-400 dark:focus:placeholder:text-gray-600 rounded-xl px-4 py-3.5 border border-white/40 dark:border-white/10 focus:outline-none focus:border-white/60 dark:focus:border-white/30 transition-colors duration-200 resize-none"
+              placeholder="Tell me about the project, timeline, or role scope..."
+              rows={5}
+              className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] p-3.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
             />
-
-            {/* Feedback */}
-            {submit.status === "success" && (
-              <p className="text-sm text-green-600 dark:text-green-400 font-medium">
-                {submit.message}
+            {errors.message && (
+              <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
+                {errors.message}
               </p>
             )}
-            {submit.status === "error" && (
-              <p className="text-sm text-red-500 font-medium">{submit.message}</p>
-            )}
+          </div>
 
-            {/* Actions */}
-            <div className="flex flex-col gap-4 mt-2">
-              <button
-                type="submit"
-                disabled={submit.status === "loading"}
-                className="w-full bg-black dark:bg-[#2b2b2b] text-white dark:text-white text-sm font-semibold py-4 rounded-xl hover-outline duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {submit.status === "loading" ? "Sending..." : "Submit Form"}
-              </button>
+          {submit.status === "success" && (
+            <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[13px] text-primary font-medium">
+              {submit.message}
+            </p>
+          )}
+          {submit.status === "error" && (
+            <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[13px] text-red-600 dark:text-red-400 font-medium">
+              {submit.message}
+            </p>
+          )}
 
-              <div className="flex items-center gap-4">
-                <div className="flex-1 h-px bg-gray-200 dark:bg-[#2a2a2a]"></div>
-                <span className="text-xs text-secondary font-medium uppercase tracking-wider">
-                  or
-                </span>
-                <div className="flex-1 h-px bg-gray-200 dark:bg-[#2a2a2a]"></div>
-              </div>
+          <div className="flex items-center justify-between pt-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-inquire px-5 py-2.5 rounded-[4px] text-[13px] font-medium transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <span>{isSubmitting ? "Sending..." : "Send Inquiry"}</span>
+              <ArrowRight01Icon size={12} className="shrink-0" />
+            </button>
 
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=cagocojanlloyd@gmail.com&su=Hire%20Inquiry%3A%20Let's%20Work%20Together"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 glass-btn text-primary dark:text-white text-sm font-semibold py-4 rounded-xl hover-outline transition-colors duration-200"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                  />
-                </svg>
-                Send an Email
-              </a>
-            </div>
-          </form>
-        </div>
-      </FadeIn>
-
-      {/* Footer */}
-      <div className="glass-sm rounded-2xl py-3 px-4 mt-auto">
-        <Footer />
+            <a
+              href="/resume.pdf"
+              download="Jan-Lloyd-Cagoco-Resume.pdf"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 hover:bg-[var(--bg-elevated)] text-[12px] font-medium text-secondary hover:text-primary transition-colors"
+            >
+              <span>Download Resume PDF</span>
+              <ArrowDown01Icon size={11} className="shrink-0 text-secondary" />
+            </a>
+          </div>
+        </form>
       </div>
     </div>
   );
