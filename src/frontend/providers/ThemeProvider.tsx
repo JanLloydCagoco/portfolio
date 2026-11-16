@@ -1,15 +1,23 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 
 export type Theme = "system" | "light" | "dark";
 export type ResolvedTheme = "light" | "dark";
 
+export type ThemeTransitionAnchor =
+  | React.MouseEvent<HTMLElement>
+  | { clientX: number; clientY: number }
+  | { x: number; y: number }
+  | null
+  | undefined;
+
 interface ThemeContextType {
   theme: Theme;
   resolvedTheme: ResolvedTheme;
-  setTheme: (theme: Theme) => void;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme, anchor?: ThemeTransitionAnchor) => void;
+  toggleTheme: (anchor?: ThemeTransitionAnchor) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
@@ -85,16 +93,101 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return () => mq.removeEventListener("change", handleMediaChange);
   }, [theme, mounted]);
 
-  const setTheme = (next: Theme) => {
-    setThemeState(next);
+  const setTheme = (next: Theme, anchor?: ThemeTransitionAnchor) => {
+    if (next === theme) return;
+
+    const willBeResolved: ResolvedTheme =
+      next === "system" ? resolveSystemTheme() : next;
+
+    if (willBeResolved === resolvedTheme) {
+      setThemeState(next);
+      setStoredTheme(next);
+      return;
+    }
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const supportsViewTransition =
+      typeof document !== "undefined" &&
+      "startViewTransition" in document &&
+      !prefersReducedMotion;
+
+    if (!supportsViewTransition) {
+      setThemeState(next);
+      setResolvedTheme(willBeResolved);
+      document.documentElement.classList.toggle("dark", willBeResolved === "dark");
+      setStoredTheme(next);
+      return;
+    }
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+
+    if (anchor) {
+      if ("currentTarget" in anchor && anchor.currentTarget) {
+        const rect = (anchor.currentTarget as HTMLElement).getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      } else if ("clientX" in anchor && typeof anchor.clientX === "number") {
+        x = anchor.clientX;
+        y = anchor.clientY;
+      } else if ("x" in anchor && typeof anchor.x === "number") {
+        x = anchor.x;
+        y = anchor.y;
+      }
+    }
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    try {
+      const transition = (document as Document & {
+        startViewTransition: (callback: () => void) => {
+          ready: Promise<void>;
+          finished: Promise<void>;
+        };
+      }).startViewTransition(() => {
+        flushSync(() => {
+          setThemeState(next);
+          setResolvedTheme(willBeResolved);
+          document.documentElement.classList.toggle("dark", willBeResolved === "dark");
+        });
+        setStoredTheme(next);
+      });
+
+      transition.ready
+        .then(() => {
+          document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: 700,
+              easing: "cubic-bezier(0.6, 0, 0.5, 0.95)",
+              pseudoElement: "::view-transition-new(root)",
+            }
+          );
+        })
+        .catch(() => {});
+    } catch {
+      setThemeState(next);
+      setResolvedTheme(willBeResolved);
+      document.documentElement.classList.toggle("dark", willBeResolved === "dark");
+      setStoredTheme(next);
+    }
   };
 
-  const toggleTheme = () => {
-    setThemeState((current) => {
-      if (current === "light") return "dark";
-      if (current === "dark") return "system";
-      return "light";
-    });
+  const toggleTheme = (anchor?: ThemeTransitionAnchor) => {
+    const next: Theme =
+      theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
+    setTheme(next, anchor);
   };
 
   return (

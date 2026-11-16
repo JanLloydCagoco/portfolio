@@ -79,3 +79,17 @@ export interface TechCategory {
   name: string;
   stacks: TechStack[];
 }
+
+export interface GitHubContributionDay {
+  date: string;
+  count: number;
+  level: 0 | 1 | 2 | 3 | 4 | -1;
+}
+
+export interface GitHubContributionData {
+  username: string;
+  year: number;
+  totalContributions: number;
+  weeks: GitHubContributionDay[][];
+  updatedAt: string;
+}

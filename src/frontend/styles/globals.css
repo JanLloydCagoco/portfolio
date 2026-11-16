@@ -38,6 +38,7 @@
     --surface-plate: rgba(250, 248, 245, 0.85);
     --shadow-elevated: 0 12px 32px -8px rgba(20, 20, 19, 0.08), 0 4px 12px -2px rgba(20, 20, 19, 0.04);
     --shadow-mockup: 0 10px 28px -6px rgba(20, 20, 19, 0.10), 0 2px 6px -1px rgba(20, 20, 19, 0.05);
+    --bg-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.10 0.042 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   }
 
   .dark {
@@ -57,6 +58,7 @@
     --surface-plate: rgba(24, 26, 30, 0.85);
     --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.45), 0 4px 14px -2px rgba(0, 0, 0, 0.30);
     --shadow-mockup: 0 12px 32px -6px rgba(0, 0, 0, 0.45), 0 2px 8px -1px rgba(0, 0, 0, 0.30);
+    --bg-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='graphite'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.94 0 0 0 0 0.94 0 0 0 0 0.94 0.026 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23graphite)'/%3E%3C/svg%3E");
   }
 
   * {
@@ -93,7 +95,7 @@
     letter-spacing: -0.005em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+    background-image: var(--bg-texture);
   }
 
   a {
@@ -148,7 +150,7 @@
 
   .tactical-ground {
     background-color: var(--bg);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+    background-image: var(--bg-texture);
   }
 
   .halftone-well {
@@ -184,13 +186,14 @@
   }
 
   .btn-inquire {
-    background-color: var(--accent);
-    color: var(--accent-fg);
+    background-color: var(--text-primary);
+    color: var(--bg);
+    border: 1px solid var(--text-primary);
     transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .btn-inquire:hover {
-    opacity: 0.92;
+    opacity: 0.90;
   }
 
   .btn-inquire:active {
@@ -223,5 +226,27 @@
 
   .shadow-mockup {
     box-shadow: var(--shadow-mockup);
+  }
+}
+
+/* Circular View Transition anchored to theme toggle button */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }

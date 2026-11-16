@@ -136,9 +136,12 @@ export default function OverviewView() {
         <CertificationCardStack />
       </section>
 
+      {/* GitHub Activity hidden for now */}
+      {/*
       <section aria-label="GitHub Activity">
         <GitHubActivityCard />
       </section>
+      */}
     </div>
   );
 }

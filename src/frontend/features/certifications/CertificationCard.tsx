@@ -53,9 +53,11 @@ export default function CertificationCard({
     <div
       onClick={onClick}
       style={style}
-      className={`absolute w-[210px] h-[210px] sm:w-[235px] sm:h-[235px] aspect-square rounded-[8px] border border-[var(--border)] bg-[var(--bg-elevated)] shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex flex-col items-center justify-center text-center p-4 sm:p-5 gap-2.5 sm:gap-3 transition-all duration-300 ease-out hover:border-[var(--border-strong)] ${
+      className={`${
+        style ? "absolute" : "relative"
+      } w-[210px] h-[210px] sm:w-[235px] sm:h-[235px] aspect-square rounded-[8px] border border-[var(--border)] bg-[var(--bg-elevated)] shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex flex-col items-center justify-center text-center p-4 sm:p-5 gap-2.5 sm:gap-3 transition-all duration-300 ease-out hover:border-[var(--border-strong)] ${
         isCenter
-          ? "cursor-default hover:-translate-y-1.5 hover:scale-[1.025] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
+          ? "cursor-default hover:-translate-y-1 hover:scale-[1.015] hover:shadow-[0_12px_28px_rgba(0,0,0,0.10)] dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.45)]"
           : position === "left"
           ? "cursor-pointer hover:opacity-70 hover:-translate-x-[45%] hover:scale-[0.94]"
           : "cursor-pointer hover:opacity-70 hover:translate-x-[45%] hover:scale-[0.94]"

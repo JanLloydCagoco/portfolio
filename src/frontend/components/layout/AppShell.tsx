@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AppSidebar from "./AppSidebar";
 import MicroCoordinateCrosshairs from "@/frontend/components/ui/MicroCoordinateCrosshairs";
@@ -55,8 +56,30 @@ export default function AppShell({ children }: AppShellProps) {
         <main className="w-full max-w-[640px] flex-1 min-w-0 py-10 lg:py-16">
           {children}
 
-          <footer aria-label="End of page marker" className="pt-16 sm:pt-20 pb-4">
+          <footer aria-label="End of page marker" className="pt-16 sm:pt-20 pb-8 space-y-6">
             <DottedSeparator />
+
+            {/* Mobile Contact & Collaboration Section (< 1024px) */}
+            <div className="lg:hidden space-y-3 pt-2">
+              <p className="text-[13px] text-secondary leading-snug">
+                For collaborations and inquiries, reach me here
+              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
+                <Link
+                  href="/inquiry"
+                  className="px-3 py-1.5 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 hover:bg-[var(--bg-elevated)] text-secondary hover:text-primary text-[12px] font-medium inline-flex items-center justify-center text-center cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.04)] active:translate-y-[0.5px] transition-all w-full sm:w-auto"
+                >
+                  Inquire
+                </Link>
+                <span className="text-[12px] text-[var(--text-muted)] text-center sm:text-left sm:px-1">or</span>
+                <a
+                  href="mailto:cagocojanlloyd@gmail.com"
+                  className="text-[14px] font-medium text-primary hover:underline text-center sm:text-left"
+                >
+                  cagocojanlloyd@gmail.com
+                </a>
+              </div>
+            </div>
           </footer>
         </main>
       </div>

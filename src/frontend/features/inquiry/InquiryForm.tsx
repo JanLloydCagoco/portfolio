@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight01Icon, ArrowDown01Icon } from "@/frontend/components/icons/NavIcons";
+import { ArrowRight01Icon } from "@/frontend/components/icons/NavIcons";
 
 interface FormState {
   name: string;
@@ -218,24 +218,15 @@ export default function InquiryForm() {
         </p>
       )}
 
-      <div className="flex items-center justify-between pt-2">
+      <div className="flex items-center justify-end pt-2">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn-inquire px-5 py-2.5 rounded-[4px] text-[13px] font-medium transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer inline-flex items-center gap-1.5"
+          className="btn-inquire px-5 py-2.5 rounded-[4px] text-[13px] font-medium transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer inline-flex items-center justify-center gap-1.5 w-full sm:w-auto"
         >
           <span>{isSubmitting ? "Sending..." : "Send Inquiry"}</span>
           <ArrowRight01Icon size={12} className="shrink-0" />
         </button>
-
-        <a
-          href="/resume.pdf"
-          download="Jan-Lloyd-Cagoco-Resume.pdf"
-          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 hover:bg-[var(--bg-elevated)] text-[12px] font-medium text-secondary hover:text-primary transition-colors"
-        >
-          <span>Download Resume PDF</span>
-          <ArrowDown01Icon size={11} className="shrink-0 text-secondary" />
-        </a>
       </div>
     </form>
   );

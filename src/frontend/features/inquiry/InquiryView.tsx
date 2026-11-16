@@ -1,6 +1,5 @@
 import React from "react";
 import PageHeader from "@/frontend/components/ui/PageHeader";
-import ContactInfoPills from "./ContactInfoPills";
 import InquiryForm from "./InquiryForm";
 
 export default function InquiryView() {
@@ -11,10 +10,7 @@ export default function InquiryView() {
         description="Available for product design roles, design systems engineering, and select technical consulting initiatives."
       />
 
-      <div className="space-y-8">
-        <ContactInfoPills />
-        <InquiryForm />
-      </div>
+      <InquiryForm />
     </div>
   );
 }

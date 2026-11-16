@@ -101,13 +101,33 @@ export default function AppSidebar() {
         <div className="pt-8 space-y-4">
           <ThemeSegmentedControl />
 
-          <div className="space-y-1">
+          <div className="space-y-2.5">
             <p className="text-[13px] sm:text-[14px] text-secondary leading-snug">
-              For collaboration and inquiry, Reach me here
+              For collaborations and inquiries, reach me here
             </p>
+            <Link
+              href="/inquiry"
+              scroll={false}
+              prefetch={false}
+              className={`w-full py-1.5 px-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 hover:bg-[var(--bg-elevated)] text-secondary hover:text-primary text-[12px] font-medium inline-flex items-center justify-center gap-1.5 transition-all text-center cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.04)] active:translate-y-[0.5px] ${
+                pathname.startsWith("/inquiry")
+                  ? "bg-[var(--bg)] text-primary border-[var(--border-strong)] shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+                  : ""
+              }`}
+            >
+              <span>Inquire</span>
+              <ArrowRight01Icon size={11} className="shrink-0 opacity-60" strokeWidth={1.8} />
+            </Link>
+            <div className="flex items-center gap-2.5 py-0.5">
+              <div className="h-px flex-1 bg-[var(--border)]" />
+              <span className="text-[11px] text-[var(--text-muted)] lowercase select-none">
+                or
+              </span>
+              <div className="h-px flex-1 bg-[var(--border)]" />
+            </div>
             <a
               href="mailto:cagocojanlloyd@gmail.com"
-              className="text-[15px] sm:text-[16px] font-medium text-primary hover:underline truncate block pt-0.5"
+              className="text-[13px] sm:text-[14px] font-medium text-primary hover:underline truncate block text-center"
             >
               cagocojanlloyd@gmail.com
             </a>

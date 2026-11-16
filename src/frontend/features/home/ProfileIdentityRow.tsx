@@ -19,7 +19,7 @@ interface SocialLink {
 }
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { label: "github", href: "https://github.com/janlloyd" },
+  { label: "github", href: "https://github.com/JanLloydCagoco" },
   { label: "linkedin", href: "https://linkedin.com/in/janlloyd" },
   { label: "facebook", href: "https://facebook.com/janlloyd" },
 ];

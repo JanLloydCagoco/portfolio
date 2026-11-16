@@ -9,6 +9,21 @@ export default function CertificationCardStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const total = certifications.length;
 
+  if (total <= 1) {
+    const cert = certifications[0];
+    if (!cert) return null;
+    return (
+      <div className="w-full flex justify-center py-4 select-none">
+        <CertificationCard
+          cert={cert}
+          variant="stack"
+          isCenter={true}
+          position="center"
+        />
+      </div>
+    );
+  }
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % total);
   };
@@ -20,9 +35,7 @@ export default function CertificationCardStack() {
   return (
     <div className="space-y-4">
       <div
-        className={`relative w-full ${
-          total > 1 ? "h-[240px] sm:h-[265px]" : "h-[225px] sm:h-[250px]"
-        } flex items-center justify-center overflow-hidden py-2 select-none`}
+        className="relative w-full h-[255px] sm:h-[280px] flex items-center justify-center overflow-x-clip overflow-y-visible py-4 select-none"
       >
         {certifications.map((cert, index) => {
           const diff = (index - currentIndex + total) % total;
