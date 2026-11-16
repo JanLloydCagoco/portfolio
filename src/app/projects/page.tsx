@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CatalogIndex from "@/components/projects/CatalogIndex";
+import ProjectsView from "@/frontend/features/projects/ProjectsView";
 
 export const metadata: Metadata = {
   title: "Projects — Jan Lloyd Cagoco",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  return <CatalogIndex />;
+  return <ProjectsView />;
 }

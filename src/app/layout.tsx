@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Familjen_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemeProvider";
-import AppShell from "@/components/layout/AppShell";
+import "@/frontend/styles/globals.css";
+import { ThemeProvider } from "@/frontend/providers/ThemeProvider";
+import AppShell from "@/frontend/components/layout/AppShell";
 
 const grotesk = Familjen_Grotesk({
   subsets: ["latin"],
@@ -19,23 +19,24 @@ const geistPixel = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Jan Lloyd Cagoco — Product Designer & Associate Developer",
+  title: "Jan Lloyd Cagoco — Full-Stack Developer",
   description:
-    "Portfolio of Jan Lloyd Cagoco, Associate Developer at LGU Baggao (Baggao, Cagayan, PH). Building public digital tools, calm typography, and performant web systems.",
+    "Portfolio of Jan Lloyd Cagoco, Full-Stack Developer. Building modern web & mobile applications with AI-driven development.",
   keywords: [
-    "product designer",
-    "associate developer",
-    "UI/UX",
+    "full-stack developer",
+    "web development",
+    "mobile apps",
+    "AI-driven development",
     "portfolio",
-    "web design",
-    "Baggao",
-    "Cagayan",
+    "React",
+    "Next.js",
+    "TypeScript",
   ],
   authors: [{ name: "Jan Lloyd Cagoco" }],
   openGraph: {
-    title: "Jan Lloyd Cagoco — Product Designer & Associate Developer",
+    title: "Jan Lloyd Cagoco — Full-Stack Developer",
     description:
-      "Portfolio of Jan Lloyd Cagoco, Associate Developer at LGU Baggao (Baggao, Cagayan, PH).",
+      "Full-stack developer building modern web & mobile apps with AI-driven development.",
     type: "website",
   },
 };
