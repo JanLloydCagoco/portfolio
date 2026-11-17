@@ -7,7 +7,7 @@ export default function InquiryView() {
     <div className="w-full space-y-10">
       <PageHeader
         title="inquire"
-        description="Available for product design roles, design systems engineering, and select technical consulting initiatives."
+        description="Available for full-stack development roles, web and mobile app builds, and select technical consulting initiatives."
       />
 
       <InquiryForm />

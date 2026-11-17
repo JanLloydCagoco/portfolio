@@ -195,7 +195,7 @@ export default function InteractiveAvatar() {
   return (
     <div
       ref={containerRef}
-      className="relative shrink-0 w-36 h-36 sm:w-48 sm:h-48 select-none pointer-events-auto transition-transform duration-100 ease-out"
+      className="relative shrink-0 w-36 h-36 sm:w-48 sm:h-48 md:max-lg:w-40 md:max-lg:h-40 select-none pointer-events-auto transition-transform duration-100 ease-out"
       aria-label="Jan Lloyd Cagoco - interactive portrait tracking cursor direction"
     >
       <div className="relative w-full h-full filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_12px_26px_rgba(0,0,0,0.45)]">

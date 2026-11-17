@@ -46,7 +46,7 @@ export default function ThemeSegmentedControl({ className = "" }: Props) {
             aria-label={`${opt.label} theme`}
             title={`${opt.label} theme`}
             onClick={(e) => setTheme(opt.value, e)}
-            className={`flex-1 py-1.5 flex items-center justify-center rounded-[3px] text-[12px] font-medium transition-all cursor-pointer ${
+            className={`flex-1 py-1.5 max-xl:py-2.5 flex items-center justify-center rounded-[3px] text-[12px] font-medium transition-all cursor-pointer ${
               isActive
                 ? "bg-[var(--bg)] text-primary shadow-[0_1px_2px_rgba(0,0,0,0.06)] border border-[var(--border)]"
                 : "text-secondary hover:text-primary opacity-70 hover:opacity-100 border border-transparent"

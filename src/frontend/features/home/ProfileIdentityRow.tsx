@@ -20,8 +20,8 @@ interface SocialLink {
 
 const SOCIAL_LINKS: SocialLink[] = [
   { label: "github", href: "https://github.com/JanLloydCagoco" },
-  { label: "linkedin", href: "https://linkedin.com/in/janlloyd" },
-  { label: "facebook", href: "https://facebook.com/janlloyd" },
+  { label: "linkedin", href: "https://www.linkedin.com/in/jan-lloyd-cagoco-245814388" },
+  { label: "facebook", href: "https://www.facebook.com/janlloyd.cagoco.7" },
 ];
 
 export default function ProfileIdentityRow() {
@@ -37,7 +37,7 @@ export default function ProfileIdentityRow() {
             Jan Lloyd Cagoco
           </h1>
 
-          <p className="text-[14px] sm:text-[15px] text-secondary leading-[2.25] sm:leading-[2.35]">
+          <p className="text-[14px] sm:text-[16px] text-secondary leading-[2.25] sm:leading-[2.35]">
             I&apos;m a{" "}
             <BadgePill>
               <SourceCodeIcon size={13} strokeWidth={2.2} className="text-primary shrink-0" />
@@ -61,7 +61,7 @@ export default function ProfileIdentityRow() {
             .
           </p>
 
-          <p className="text-[14px] sm:text-[15px] text-secondary leading-[2.25] sm:leading-[2.35]">
+          <p className="text-[14px] sm:text-[16px] text-secondary leading-[2.25] sm:leading-[2.35]">
             Right now I&apos;m focused on crafting{" "}
             <BadgePill>
               <RocketIcon size={13} strokeWidth={2.2} className="text-primary shrink-0" />
@@ -75,14 +75,14 @@ export default function ProfileIdentityRow() {
             into snappy things people actually use.
           </p>
 
-          <div className="flex items-center justify-center sm:justify-start gap-5 pt-1 text-[13px] text-secondary font-mono tracking-tight select-none">
+          <div className="flex items-center justify-center sm:justify-start gap-5 pt-1 text-[14px] text-secondary font-mono tracking-tight select-none">
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 hover:text-primary transition-colors lowercase group"
+                className="tap-target inline-flex items-center gap-1 hover:text-primary transition-colors lowercase group"
               >
                 <span className="group-hover:underline underline-offset-4 decoration-[var(--border-strong)]">{link.label}</span>
                 <ArrowUpRight01Icon

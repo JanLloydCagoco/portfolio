@@ -47,6 +47,7 @@ export default function InquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const website = new FormData(e.currentTarget as HTMLFormElement).get("website");
 
     const nextErrors: FieldErrors = {};
     if (!form.name.trim()) {
@@ -83,6 +84,7 @@ export default function InquiryForm() {
           name: form.name,
           email: form.email,
           message: payloadMessage,
+          website,
         }),
       });
 
@@ -115,11 +117,19 @@ export default function InquiryForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px opacity-0"
+      />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label
             htmlFor="inquiry-name"
-            className="block text-[13px] font-medium text-secondary mb-1.5"
+            className="block text-[14px] font-medium text-secondary mb-1.5"
           >
             Name
           </label>
@@ -143,7 +153,7 @@ export default function InquiryForm() {
         <div>
           <label
             htmlFor="inquiry-email"
-            className="block text-[13px] font-medium text-secondary mb-1.5"
+            className="block text-[14px] font-medium text-secondary mb-1.5"
           >
             Email
           </label>
@@ -168,7 +178,7 @@ export default function InquiryForm() {
       <div>
         <label
           htmlFor="inquiry-subject"
-          className="block text-[13px] font-medium text-secondary mb-1.5"
+          className="block text-[14px] font-medium text-secondary mb-1.5"
         >
           Subject (Optional)
         </label>
@@ -178,7 +188,7 @@ export default function InquiryForm() {
           name="subject"
           value={form.subject}
           onChange={handleChange}
-          placeholder="Product design role, public web application, or design system"
+          placeholder="Full-stack role, public web application, or mobile app"
           autoComplete="off"
           className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] px-3.5 py-2.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors"
         />
@@ -187,7 +197,7 @@ export default function InquiryForm() {
       <div>
         <label
           htmlFor="inquiry-message"
-          className="block text-[13px] font-medium text-secondary mb-1.5"
+          className="block text-[14px] font-medium text-secondary mb-1.5"
         >
           Message
         </label>
@@ -197,7 +207,7 @@ export default function InquiryForm() {
           value={form.message}
           onChange={handleChange}
           placeholder="Tell me about the project, timeline, or role scope..."
-          rows={5}
+          rows={3}
           className="w-full rounded-[4px] bg-[var(--bg-elevated)]/70 border border-[var(--border)] p-3.5 text-[14px] text-primary placeholder:text-muted focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
         />
         {errors.message && (
@@ -208,12 +218,12 @@ export default function InquiryForm() {
       </div>
 
       {submit.status === "success" && (
-        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[13px] text-primary font-medium">
+        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[14px] text-primary font-medium">
           {submit.message}
         </p>
       )}
       {submit.status === "error" && (
-        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[13px] text-red-600 dark:text-red-400 font-medium">
+        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[14px] text-red-600 dark:text-red-400 font-medium">
           {submit.message}
         </p>
       )}
@@ -222,7 +232,7 @@ export default function InquiryForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn-inquire px-5 py-2.5 rounded-[4px] text-[13px] font-medium transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer inline-flex items-center justify-center gap-1.5 w-full sm:w-auto"
+          className="btn-inquire px-5 py-2.5 rounded-[4px] text-[14px] font-medium transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer inline-flex items-center justify-center gap-1.5 w-full sm:w-auto"
         >
           <span>{isSubmitting ? "Sending..." : "Send Inquiry"}</span>
           <ArrowRight01Icon size={12} className="shrink-0" />

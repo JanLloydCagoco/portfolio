@@ -3,7 +3,6 @@
 import React from "react";
 import ProfileIdentityRow from "./ProfileIdentityRow";
 import CertificationCardStack from "@/frontend/features/certifications/CertificationCardStack";
-import GitHubActivityCard from "./GitHubActivityCard";
 import SectionHeader from "@/frontend/components/ui/SectionHeader";
 import DottedSeparator from "@/frontend/components/ui/DottedSeparator";
 import CoordinateStreak from "@/frontend/components/ui/CoordinateStreak";
@@ -39,28 +38,28 @@ export default function OverviewView() {
               <a
                 key={proj.slug}
                 href={proj.websiteUrl}
-                target="_blank"
+                target={proj.websiteUrl.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="relative z-10 block p-3.5 sm:p-4 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] hover:border-[var(--border-strong)] transition-all group"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="shrink-0 pt-0.5">
-                    <h3 className="text-[18px] sm:text-[20px] font-bold text-primary font-grotesk tracking-tight group-hover:underline">
+                <div className="flex flex-col gap-1.5 @xl:flex-row @xl:items-start @xl:justify-between @xl:gap-4">
+                  <div className="@xl:shrink-0 @xl:pt-0.5">
+                    <h3 className="text-[20px] font-bold text-primary font-grotesk tracking-tight group-hover:underline">
                       {proj.name}
                     </h3>
                   </div>
 
-                  <div className="flex flex-col items-end text-right max-w-[380px] sm:max-w-[440px] min-w-0">
+                  <div className="flex flex-col @xl:items-end @xl:text-right @xl:max-w-[440px] min-w-0">
                     <div className="inline-flex items-center gap-1.5 text-secondary">
                       <span className="text-[12px] font-mono text-muted tabular-nums">
                         {proj.year}
                       </span>
-                      <span className="text-muted/60 text-[11px]">|</span>
-                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-[3px] bg-[var(--bg)] border border-[var(--border)] text-secondary">
+                      <span className="text-muted/60 text-[12px]">|</span>
+                      <span className="text-[12px] font-medium px-2 py-0.5 rounded-[4px] bg-[var(--bg)] border border-[var(--border)] text-secondary">
                         {proj.projectType}
                       </span>
                     </div>
-                    <p className="text-[13px] text-secondary leading-snug mt-1.5 line-clamp-2">
+                    <p className="text-[14px] text-secondary leading-snug mt-1.5 line-clamp-2">
                       {proj.description}
                     </p>
                   </div>
@@ -96,15 +95,15 @@ export default function OverviewView() {
           {timelineRecords.map((item) => (
             <div
               key={item.id}
-              className="py-3 flex items-center justify-between gap-4 text-[14px]"
+              className="py-3 grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-0.5 @xl:flex @xl:items-center @xl:justify-between text-[14px]"
             >
-              <div className="font-medium text-primary min-w-0 truncate sm:w-1/3">
+              <div className="font-medium text-primary min-w-0 truncate @xl:w-1/3">
                 {item.title}
               </div>
-              <div className="text-secondary min-w-0 truncate sm:w-1/3 sm:text-left text-center">
+              <div className="text-secondary min-w-0 truncate @max-xl:order-3 @max-xl:col-span-2 @max-xl:text-[14px] @xl:w-1/3">
                 {item.subtitle}
               </div>
-              <div className="text-secondary text-[13px] tabular-nums text-right shrink-0 sm:w-1/3">
+              <div className="text-secondary text-[14px] tabular-nums text-right shrink-0 @xl:w-1/3">
                 {item.period}
               </div>
             </div>
@@ -120,8 +119,8 @@ export default function OverviewView() {
         />
 
         <div className="flex flex-wrap gap-2">
-          {featuredTech.map((tech) => (
-            <TechBadge key={tech.name} tech={tech} size="sm" />
+          {featuredTech.slice(0, 9).map((tech, i) => (
+            <span key={tech.name} className={i >= 6 ? "max-sm:hidden" : undefined}><TechBadge tech={tech} size="sm" /></span>
           ))}
         </div>
       </section>
@@ -135,13 +134,6 @@ export default function OverviewView() {
 
         <CertificationCardStack />
       </section>
-
-      {/* GitHub Activity hidden for now */}
-      {/*
-      <section aria-label="GitHub Activity">
-        <GitHubActivityCard />
-      </section>
-      */}
     </div>
   );
 }

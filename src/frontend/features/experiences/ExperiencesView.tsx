@@ -18,7 +18,7 @@ export default function ExperiencesView() {
       />
 
       <section aria-label="Employment & Internships" className="space-y-6">
-        <h2 className="text-[13px] font-medium text-secondary uppercase tracking-wider">
+        <h2 className="text-[14px] font-medium text-secondary uppercase tracking-wider">
           Employment &amp; Internships
         </h2>
         <TimelineSpine>
@@ -29,7 +29,7 @@ export default function ExperiencesView() {
       </section>
 
       <section aria-label="Education" className="space-y-6 pt-2">
-        <h2 className="text-[13px] font-medium text-secondary uppercase tracking-wider">
+        <h2 className="text-[14px] font-medium text-secondary uppercase tracking-wider">
           Education
         </h2>
         <TimelineSpine>
@@ -40,7 +40,7 @@ export default function ExperiencesView() {
       </section>
 
       <section aria-label="Honors & Awards" className="space-y-6 pt-2">
-        <h2 className="text-[13px] font-medium text-secondary uppercase tracking-wider">
+        <h2 className="text-[14px] font-medium text-secondary uppercase tracking-wider">
           Honors &amp; Awards
         </h2>
         <TimelineSpine className="space-y-8">

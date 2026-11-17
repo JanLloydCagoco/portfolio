@@ -17,7 +17,7 @@ export function TechBadge({
 
   return (
     <div
-      className={`rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 text-[13px] font-medium text-primary flex items-center select-none hover:border-[var(--border-strong)] transition-colors ${sizeClasses} ${className}`}
+      className={`rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)]/60 text-[14px] font-medium text-primary flex items-center select-none hover:border-[var(--border-strong)] transition-colors ${sizeClasses} ${className}`}
     >
       <span className="w-4 h-4 text-secondary flex items-center justify-center shrink-0 [&>svg]:w-4 [&>svg]:h-4">
         {tech.icon}

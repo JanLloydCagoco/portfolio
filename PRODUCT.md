@@ -9,7 +9,7 @@ web
 ## Users
 
 Two audiences, weighted equally:
-- Recruiters and engineering leads evaluating a software engineer & product designer: they skim credentials, open projects, and evaluate technical craft.
+- Recruiters and engineering leads evaluating a full-stack developer: they skim credentials, open projects, and evaluate technical craft.
 - Government and institutional stakeholders evaluating public sector digital solutions and AI implementations.
 
 ## Product Purpose
@@ -31,7 +31,7 @@ A developer and designer's portfolio is itself a primary proof of craft: high pe
 
 ## Brand Commitments
 
-- Name: Jan Lloyd Cagoco. Role: Associate Developer & Product Designer.
+- Name: Jan Lloyd Cagoco. Role: Full-Stack Developer (Associate Developer at LGU Baggao).
 - Architectural, tactile desk aesthetic inspired by Bryl Lim editorial craft.
 
 ## Evidence on Hand

@@ -16,19 +16,19 @@ colors:
   electric-cobalt: "#3B82F6"
 typography:
   display:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "34px"
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: "-0.03em"
   display-sm:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "28px"
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: "-0.03em"
   headline:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "30px"
     fontWeight: 600
     lineHeight: 1.15
@@ -40,20 +40,20 @@ typography:
     letterSpacing: "-0.01em"
     casing: "lowercase"
   headline-sm:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "26px"
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: "-0.025em"
   title:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "20px"
     fontWeight: 600
     lineHeight: 1.25
     letterSpacing: "-0.02em"
   subheadline:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
-    fontSize: "18px"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
+    fontSize: "20px"
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "-0.02em"
@@ -63,55 +63,55 @@ typography:
     lineHeight: 1.2
     letterSpacing: "-0.025em"
   nav-tab:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
-    fontSize: "17px"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
+    fontSize: "16px"
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: "-0.01em"
   subtitle:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "16px"
     fontWeight: 600
     lineHeight: 1.35
     letterSpacing: "-0.015em"
   body:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
-    fontSize: "15px"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
+    fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "-0.005em"
   body-sm:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.55
     letterSpacing: "-0.005em"
   ledger:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
-    fontSize: "13px"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
+    fontSize: "14px"
     fontWeight: 500
     lineHeight: 1.45
     fontFeature: "'tnum' 1"
   caption:
-    fontFamily: "'PP Neue Montreal', var(--font-grotesk), sans-serif"
+    fontFamily: "'Familjen Grotesk', var(--font-grotesk), sans-serif"
     fontSize: "12px"
     fontWeight: 500
     lineHeight: 1.4
     fontFeature: "'tnum' 1"
   micro-badge:
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: "11px"
+    fontSize: "12px"
     fontWeight: 500
     letterSpacing: "0.01em"
   mono-badge:
     fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: "10px"
+    fontSize: "12px"
     fontWeight: 500
     letterSpacing: "0.02em"
 rounded:
-  xs: "3px"
+  xs: "4px"
   sm: "4px"
-  md: "6px"
+  md: "8px"
   full: "9999px"
 spacing:
   sidebar: "210px"
@@ -132,7 +132,7 @@ components:
 
 **Creative North Star: "The Tactical Optical Desk & Cartographic Ground"**
 
-The portfolio of **Jan Lloyd Cagoco** (Product Designer & Associate Developer at LGU Baggao) is structured as a single unified editorial shell pairing a sticky left identity rail across a generous negative space gulf with an authored Baggao cartographic banner, tactile 3-card certification stack, and real municipal engineering records.
+The portfolio of **Jan Lloyd Cagoco** (Full-Stack Developer, Associate Developer at LGU Baggao) is structured as a single unified editorial shell pairing a sticky left identity rail across a generous negative space gulf with an authored Baggao cartographic banner, tactile 3-card certification stack, and real municipal engineering records.
 
 Every route (`/`, `/projects`, `/experiences`, `/stack`, `/certifications`, `/inquiry`) shares the exact same spatial frame: a fixed left identity and navigation rail (`210px` wide, with right dividing border `border-r border-[var(--border)] pr-5 lg:pr-6`, pinned via `h-[calc(100vh-8rem)]`) separated across a focused whitespace gulf (`lg:gap-20 xl:gap-24`) from a compressed reading column (`max-w-[640px]`). Horizontal top navigation bars and footer strips are completely discarded in favor of architectural quietness.
 
@@ -174,11 +174,13 @@ A restrained dual-mode palette derived from physical print editorial sheets and 
 
 ## Typography
 
-**Display Font:** `'PP Neue Montreal', var(--font-grotesk), sans-serif`
-**Body Font:** `'PP Neue Montreal', var(--font-grotesk), sans-serif`
+**Display Font:** `'Familjen Grotesk', var(--font-grotesk), sans-serif`
+**Body Font:** `'Familjen Grotesk', var(--font-grotesk), sans-serif`
 **Label/Mono Font:** `ui-monospace, SFMono-Regular, Menlo, monospace`
 
 **Character:** Architectural Grotesk with tight tracking, generous x-height, and neutral editorial rhythm.
+
+**The Five-Step Scale Rule.** Grotesk and mono text uses only `12px`, `14px`, `16px`, and `20px`, plus the Departure Mono display sizes. No in-between sizes. The per-role pixel values in the hierarchy below predate this rule; snap each to the nearest step.
 
 ### Hierarchy
 - **Display** (600, 34px / 28px mobile, line-height 1.15, tracking -0.03em): Project case study titles.
@@ -209,7 +211,8 @@ A unified two-column editorial canvas without enclosing outer borders:
 - **Whitespace Gulf:** `lg:gap-20 xl:gap-24` (`80px` to `96px`) separating navigation from reading.
 - **Content Column:** `max-w-[640px]`, `w-full`, compressed single-column reading flow.
 - **Shell Envelope:** `max-w-[1040px] xl:max-w-[1100px] mx-auto w-full px-4 sm:px-6 flex justify-center`.
-- **Mobile Responsive Layout (<1024px):** Compact horizontal masthead row (name + 3-way theme switch) stacked over an overflow-x scrolling navigation strip with active optical arrows.
+- **Tablet Layout (768px–1279px):** Same rail-plus-column frame, but the rail is fixed flush to the left screen edge (`228px`, full height, opaque ground) with 40px navigation rows and larger touch controls; the reading column centers in the remaining width.
+- **Phone Layout (<768px):** The masthead and a 40px menu button are both fixed to the top row (`62px` tall) above the menu sheet, so opening the menu reveals only the tabs and never redraws the name. The sheet fills the screen on a 260ms opacity fade, then the tabs rise in sequence at `clamp(28px, 9vw, 40px)` with active optical arrows, followed by the theme switch, a 48px Inquire button, and the mailto link. Reduced motion keeps the fade and drops the stagger. Side gutters are `20px`, and the menu-button icon lands on the same gutter line as the content.
 
 ## Elevation & Depth
 
@@ -227,11 +230,11 @@ Surfaces are tactile and flat at rest, relying on subtle material differences ra
 
 ## Shapes
 
-- **Micro Badges & Pills:** `3px` radius (`rounded-[3px]`).
+- **Micro Badges & Pills:** `4px` radius (`rounded-[4px]`).
 - **Interactive Controls & Buttons:** `4px` radius (`rounded-[4px]`).
-- **Containers & Banners:** `6px` radius (`rounded-[6px]`).
+- **Containers & Banners:** `8px` radius (`rounded-[8px]`).
 - **Avatar Container:** `8px` radius (`rounded-[8px]`).
-- **Dividers & Terminal Footers:** CAD micro-coordinate crosshairs separator (`<DottedSeparator />`) deployed below the Overview hero identity row and as the universal terminal footer anchor at the end of every page.
+- **Dividers & Terminal Footers:** CAD micro-coordinate crosshairs separator (`<DottedSeparator />`) deployed below the Overview hero identity row and as the universal terminal footer anchor at the end of every page. The terminal footer carries the separator alone; contact lives only in the sidebar and the phone menu.
 
 ## Components
 

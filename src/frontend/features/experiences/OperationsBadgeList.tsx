@@ -26,7 +26,7 @@ export default function OperationsBadgeList({
       {visibleSkills.map((op) => (
         <span
           key={op}
-          className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-[var(--bg-elevated)] border border-[var(--border)] text-[11px] font-mono text-secondary select-none"
+          className="inline-flex items-center px-2.5 py-1 rounded-[4px] bg-[var(--bg-elevated)] border border-[var(--border)] text-[12px] font-mono text-secondary select-none"
         >
           {op}
         </span>
@@ -37,7 +37,7 @@ export default function OperationsBadgeList({
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
           title={isExpanded ? "Collapse skills" : remainingSkills.join(", ")}
-          className="inline-flex items-center px-2.5 py-1 rounded-[3px] border border-dashed border-[var(--border-strong)] bg-transparent text-[11px] font-mono text-muted hover:text-primary hover:border-primary transition-colors cursor-pointer select-none"
+          className="tap-target inline-flex items-center px-2.5 py-1 rounded-[4px] border border-dashed border-[var(--border-strong)] bg-transparent text-[12px] font-mono text-muted hover:text-primary hover:border-primary transition-colors cursor-pointer select-none"
         >
           {isExpanded ? "− less" : `+${remainingCount} skills`}
         </button>

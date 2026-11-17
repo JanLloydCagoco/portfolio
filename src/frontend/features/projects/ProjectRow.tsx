@@ -10,39 +10,37 @@ export default function ProjectRow({ project }: ProjectRowProps) {
   return (
     <a
       href={project.websiteUrl}
-      target="_blank"
+      target={project.websiteUrl.startsWith("http") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="group block py-5 sm:py-6 transition-colors hover:bg-[var(--bg-elevated)]/25 -mx-3 px-3 sm:-mx-4 sm:px-4 rounded-[3px]"
+      className="group block py-5 sm:py-6"
     >
-      <div className="flex items-center justify-between gap-4 sm:gap-6">
-        <div className="shrink-0">
-          <h2 className="text-[18px] sm:text-[20px] font-bold text-primary font-grotesk tracking-tight group-hover:underline">
+      <div className="flex items-center gap-4">
+        <div className="flex-1 min-w-0 flex flex-col gap-1.5 @xl:flex-row @xl:items-center @xl:justify-between @xl:gap-6">
+          <h2 className="@xl:shrink-0 text-[20px] font-bold text-primary font-grotesk tracking-tight group-hover:underline">
             {project.name}
           </h2>
-        </div>
 
-        <div className="flex items-center gap-3 sm:gap-4 max-w-[380px] sm:max-w-[440px] min-w-0">
-          <div className="flex flex-col items-end text-right min-w-0">
+          <div className="flex flex-col @xl:items-end @xl:text-right min-w-0 @xl:max-w-[408px]">
             <div className="inline-flex items-center gap-1.5 text-secondary">
               <span className="text-[12px] font-mono text-muted tabular-nums">
                 {project.year}
               </span>
-              <span className="text-muted/60 text-[11px]">|</span>
-              <span className="text-[11px] font-medium px-2 py-0.5 rounded-[3px] bg-[var(--bg-elevated)] border border-[var(--border)] text-secondary">
+              <span className="text-muted/60 text-[12px]">|</span>
+              <span className="text-[12px] font-medium px-2 py-0.5 rounded-[4px] bg-[var(--bg-elevated)] border border-[var(--border)] text-secondary">
                 {project.projectType}
               </span>
             </div>
-            <p className="text-[13px] sm:text-[14px] text-secondary leading-snug mt-1.5 line-clamp-2 sm:line-clamp-none">
+            <p className="text-[14px] text-secondary leading-snug mt-1.5 line-clamp-2 sm:line-clamp-none">
               {project.description}
             </p>
           </div>
+        </div>
 
-          <div className="shrink-0 text-muted group-hover:text-primary transition-colors flex items-center">
-            <ArrowUpRight01Icon
-              size={16}
-              className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-            />
-          </div>
+        <div className="shrink-0 text-muted group-hover:text-primary transition-colors flex items-center">
+          <ArrowUpRight01Icon
+            size={16}
+            className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+          />
         </div>
       </div>
     </a>

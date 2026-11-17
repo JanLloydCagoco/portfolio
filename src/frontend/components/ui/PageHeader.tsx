@@ -16,7 +16,7 @@ export function PageHeader({
       <h1 className="font-pixel text-[26px] sm:text-[28px] leading-none text-primary lowercase">
         {title}
       </h1>
-      <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed">
+      <p className="text-[16px] text-secondary leading-relaxed">
         {description}
       </p>
     </div>

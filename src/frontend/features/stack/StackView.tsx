@@ -14,7 +14,7 @@ export default function StackView() {
       <div className="space-y-8">
         {techCategories.map((category) => (
           <div key={category.name} className="space-y-3">
-            <h2 className="text-[13px] font-medium text-secondary uppercase tracking-wider">
+            <h2 className="text-[14px] font-medium text-secondary uppercase tracking-wider">
               {category.name}
             </h2>
 

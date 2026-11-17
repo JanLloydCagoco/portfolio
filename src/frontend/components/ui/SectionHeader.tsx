@@ -30,8 +30,7 @@ export function SectionHeader({
         <Link
           href={linkHref}
           scroll={false}
-          prefetch={false}
-          className="inline-flex items-center gap-1 text-[13px] text-secondary hover:text-primary transition-colors group"
+          className="tap-target inline-flex items-center gap-1 text-[14px] text-secondary hover:text-primary transition-colors group"
         >
           <span className="group-hover:underline underline-offset-4 decoration-[var(--border-strong)]">
             {linkLabel}

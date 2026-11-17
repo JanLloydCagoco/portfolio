@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { certifications } from "@/data/certifications";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "@/frontend/components/icons/NavIcons";
 import CertificationCard from "./CertificationCard";
 
 export default function CertificationCardStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
   const total = certifications.length;
 
   if (total <= 1) {
@@ -35,7 +36,17 @@ export default function CertificationCardStack() {
   return (
     <div className="space-y-4">
       <div
-        className="relative w-full h-[255px] sm:h-[280px] flex items-center justify-center overflow-x-clip overflow-y-visible py-4 select-none"
+        className="relative w-full h-[255px] sm:h-[280px] flex items-center justify-center overflow-x-clip overflow-y-visible py-4 select-none touch-pan-y"
+        onTouchStart={(e) => {
+          touchStartX.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX.current;
+          touchStartX.current = null;
+          if (dx <= -40) handleNext();
+          if (dx >= 40) handlePrev();
+        }}
       >
         {certifications.map((cert, index) => {
           const diff = (index - currentIndex + total) % total;
@@ -82,19 +93,23 @@ export default function CertificationCardStack() {
 
       {total > 1 && (
         <div className="flex items-center justify-between pt-1">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-0.5 -ml-0.5">
             {certifications.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 aria-label={`Go to certification ${idx + 1}`}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                  currentIndex === idx
-                    ? "w-5 bg-primary"
-                    : "w-1.5 bg-[var(--border-strong)] hover:bg-secondary"
-                }`}
-              />
+                className="group h-7 max-xl:h-10 px-0.5 max-xl:px-1.5 flex items-center cursor-pointer"
+              >
+                <span
+                  className={`h-1.5 rounded-full transition-all ${
+                    currentIndex === idx
+                      ? "w-5 bg-primary"
+                      : "w-1.5 bg-[var(--border-strong)] group-hover:bg-secondary"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
@@ -103,7 +118,7 @@ export default function CertificationCardStack() {
               type="button"
               aria-label="Previous certification"
               onClick={handlePrev}
-              className="w-7 h-7 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] hover:bg-[var(--bg)] text-secondary hover:text-primary transition-colors flex items-center justify-center cursor-pointer"
+              className="w-7 h-7 max-xl:w-10 max-xl:h-10 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] hover:bg-[var(--bg)] text-secondary hover:text-primary transition-colors flex items-center justify-center cursor-pointer"
             >
               <ArrowLeft01Icon size={14} />
             </button>
@@ -111,7 +126,7 @@ export default function CertificationCardStack() {
               type="button"
               aria-label="Next certification"
               onClick={handleNext}
-              className="w-7 h-7 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] hover:bg-[var(--bg)] text-secondary hover:text-primary transition-colors flex items-center justify-center cursor-pointer"
+              className="w-7 h-7 max-xl:w-10 max-xl:h-10 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] hover:bg-[var(--bg)] text-secondary hover:text-primary transition-colors flex items-center justify-center cursor-pointer"
             >
               <ArrowRight01Icon size={14} />
             </button>

@@ -20,6 +20,72 @@
   font-family: 'Departure Mono', var(--font-pixel), ui-monospace, monospace;
 }
 
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Grows the hit area on touch screens without moving the layout */
+@utility tap-target {
+  position: relative;
+
+  @media (pointer: coarse) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: calc(var(--tap-y, 12px) * -1) -8px;
+    }
+  }
+}
+
+/* iOS Safari zooms the page when a focused field is under 16px */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Phone menu: the sheet fades in, then the tabs rise in */
+.mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-out, visibility 0s 200ms;
+}
+
+.mobile-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 260ms ease-out, visibility 0s;
+}
+
+.mobile-menu-item {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 160ms ease-out, transform 160ms ease-out;
+}
+
+.mobile-menu[data-open="true"] .mobile-menu-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i) * 50ms + 140ms),
+    transform 560ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i) * 50ms + 140ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu .mobile-menu-item,
+  .mobile-menu[data-open="true"] .mobile-menu-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @layer base {
   :root {
     --bg: #FAF8F5;
@@ -88,8 +154,8 @@
     background-color: var(--bg);
     color: var(--text-primary);
     caret-color: var(--accent);
-    font-family: "PP Neue Montreal", var(--font-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15px;
+    font-family: var(--font-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
     min-height: 100vh;
     letter-spacing: -0.005em;

@@ -11,7 +11,7 @@ export interface ValidationResult {
 }
 
 function sanitize(str: string): string {
-  return str.replace(/<[^>]*>/g, "").trim();
+  return str.trim();
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

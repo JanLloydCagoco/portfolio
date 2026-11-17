@@ -16,11 +16,11 @@ export default function CertificationsView() {
       <div className="space-y-8">
         {certificationCategories.map((category) => (
           <section key={category.name} aria-label={category.name} className="space-y-3">
-            <h2 className="text-[13px] font-medium text-secondary uppercase tracking-wider">
+            <h2 className="text-[14px] font-medium text-secondary uppercase tracking-wider">
               {category.name}
             </h2>
 
-            <div className="flex flex-wrap gap-3 sm:gap-4 max-w-[540px]">
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-4 max-w-[540px]">
               {category.certifications.map((cert) => (
                 <CertificationCard
                   key={cert.id}
