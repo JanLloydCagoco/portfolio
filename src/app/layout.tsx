@@ -1,20 +1,45 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemeProvider";
-import Navbar from "@/components/layout/Navbar";
+import { Familjen_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
+import "@/frontend/styles/globals.css";
+import { ThemeProvider } from "@/frontend/providers/ThemeProvider";
+import AppShell from "@/frontend/components/layout/AppShell";
+
+const grotesk = Familjen_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-grotesk",
+  display: "swap",
+});
+
+const geistPixel = localFont({
+  src: "../../public/fonts/DepartureMono-Regular.woff2",
+  variable: "--font-pixel",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Jan Lloyd Cagoco — Product Designer",
+  title: "Jan Lloyd Cagoco — Full-Stack Developer",
   description:
-    "Portfolio of Jan Lloyd Cagoco, a product designer focused on purposeful interfaces and captivating design.",
-  keywords: ["product designer", "UI/UX", "portfolio", "web design"],
+    "Portfolio of Jan Lloyd Cagoco, Full-Stack Developer. Building modern web & mobile applications with AI-driven development.",
+  keywords: [
+    "full-stack developer",
+    "web development",
+    "mobile apps",
+    "AI-driven development",
+    "portfolio",
+    "React",
+    "Next.js",
+    "TypeScript",
+  ],
   authors: [{ name: "Jan Lloyd Cagoco" }],
   openGraph: {
-    title: "Jan Lloyd Cagoco — Product Designer",
+    title: "Jan Lloyd Cagoco — Full-Stack Developer",
     description:
-      "Portfolio of Jan Lloyd Cagoco, a product designer focused on purposeful interfaces and captivating design.",
+      "Full-stack developer building modern web & mobile apps with AI-driven development.",
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -23,18 +48,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${grotesk.variable} ${geistPixel.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var t = localStorage.getItem('theme') || 'system';
+                  var isDark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <ThemeProvider>
-          <div className="min-h-screen bg-page flex flex-col items-center px-4 py-6 gap-4">
-            <div className="sticky top-4 z-50 w-full max-w-[560px]">
-              <Navbar />
-            </div>
-
-            <main className="w-full max-w-[560px] flex flex-col flex-1 gap-3">
-              {children}
-            </main>
-          </div>
+          <AppShell>{children}</AppShell>
         </ThemeProvider>
       </body>
     </html>

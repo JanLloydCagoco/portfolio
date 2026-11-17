@@ -1,13 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
+  async redirects() {
+    return [
       {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        source: "/tech",
+        destination: "/stack",
+        permanent: true,
       },
-    ],
+    ];
   },
   async headers() {
     return [

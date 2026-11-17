@@ -1,0 +1,318 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --font-pixel: 'Departure Mono', var(--font-pixel), ui-monospace, monospace;
+}
+
+@utility font-pixel {
+  font-family: 'Departure Mono', var(--font-pixel), ui-monospace, monospace;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Grows the hit area on touch screens without moving the layout */
+@utility tap-target {
+  position: relative;
+
+  @media (pointer: coarse) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: calc(var(--tap-y, 12px) * -1) -8px;
+    }
+  }
+}
+
+/* iOS Safari zooms the page when a focused field is under 16px */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Phone menu: the sheet fades in, then the tabs rise in */
+.mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-out, visibility 0s 200ms;
+}
+
+.mobile-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 260ms ease-out, visibility 0s;
+}
+
+.mobile-menu-item {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 160ms ease-out, transform 160ms ease-out;
+}
+
+.mobile-menu[data-open="true"] .mobile-menu-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 480ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i) * 50ms + 140ms),
+    transform 560ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i) * 50ms + 140ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu .mobile-menu-item,
+  .mobile-menu[data-open="true"] .mobile-menu-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@layer base {
+  :root {
+    --bg: #FAF8F5;
+    --bg-elevated: #F1EFEA;
+    --bg-glass: rgba(250, 248, 245, 0.84);
+    --text-primary: #141413;
+    --text-secondary: #585753;
+    --text-muted: #706E69;
+    --border: rgba(20, 20, 19, 0.08);
+    --border-strong: rgba(20, 20, 19, 0.16);
+    --halftone-dot: rgba(20, 20, 19, 0.065);
+    --stipple-dot: rgba(20, 20, 19, 0.17);
+    --flute-rib: rgba(20, 20, 19, 0.025);
+    --accent: #2563EB;
+    --accent-fg: #FFFFFF;
+    --surface-plate: rgba(250, 248, 245, 0.85);
+    --shadow-elevated: 0 12px 32px -8px rgba(20, 20, 19, 0.08), 0 4px 12px -2px rgba(20, 20, 19, 0.04);
+    --shadow-mockup: 0 10px 28px -6px rgba(20, 20, 19, 0.10), 0 2px 6px -1px rgba(20, 20, 19, 0.05);
+    --bg-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.10 0.042 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  }
+
+  .dark {
+    --bg: #111214;
+    --bg-elevated: #181A1E;
+    --bg-glass: rgba(17, 18, 20, 0.84);
+    --text-primary: #EDEDEB;
+    --text-secondary: #9A9CA2;
+    --text-muted: #7C7F87;
+    --border: rgba(237, 237, 235, 0.08);
+    --border-strong: rgba(237, 237, 235, 0.16);
+    --halftone-dot: rgba(237, 237, 235, 0.065);
+    --stipple-dot: rgba(237, 237, 235, 0.15);
+    --flute-rib: rgba(255, 255, 255, 0.025);
+    --accent: #3B82F6;
+    --accent-fg: #FFFFFF;
+    --surface-plate: rgba(24, 26, 30, 0.85);
+    --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.45), 0 4px 14px -2px rgba(0, 0, 0, 0.30);
+    --shadow-mockup: 0 12px 32px -6px rgba(0, 0, 0, 0.45), 0 2px 8px -1px rgba(0, 0, 0, 0.30);
+    --bg-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='graphite'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.94 0 0 0 0 0.94 0 0 0 0 0.94 0.026 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23graphite)'/%3E%3C/svg%3E");
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  html {
+    color-scheme: light;
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    caret-color: var(--accent);
+    font-family: var(--font-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: var(--bg-texture);
+  }
+
+  a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hairline-t {
+    border-top: 1px solid var(--border);
+  }
+
+  .hairline-b {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hairline-l {
+    border-left: 1px solid var(--border);
+  }
+
+  .hairline-r {
+    border-right: 1px solid var(--border);
+  }
+
+  .hairline-box {
+    border: 1px solid var(--border);
+  }
+
+  .tactical-ground {
+    background-color: var(--bg);
+    background-image: var(--bg-texture);
+  }
+
+  .halftone-well {
+    background-color: var(--bg-elevated);
+    background-image: radial-gradient(var(--halftone-dot) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  .corner-dot-vignette {
+    background-image: radial-gradient(var(--stipple-dot) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+    mask-image: radial-gradient(ellipse at 100% 0%, black 25%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 25%, transparent 80%);
+  }
+
+  .fluted-glass {
+    background-color: var(--bg-glass);
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--flute-rib) 0px,
+      var(--flute-rib) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+  }
+
+  .surface-plate {
+    background-color: var(--surface-plate);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .btn-inquire {
+    background-color: var(--text-primary);
+    color: var(--bg);
+    border: 1px solid var(--text-primary);
+    transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-inquire:hover {
+    opacity: 0.90;
+  }
+
+  .btn-inquire:active {
+    transform: translateY(0.5px);
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .border-default {
+    border-color: var(--border);
+  }
+
+  .bg-page {
+    background-color: var(--bg);
+  }
+
+  .shadow-tactical {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-mockup {
+    box-shadow: var(--shadow-mockup);
+  }
+}
+
+/* Circular View Transition anchored to theme toggle button */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}

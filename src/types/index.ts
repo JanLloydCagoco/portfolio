@@ -1,4 +1,7 @@
+import React from "react";
+
 export interface Project {
+  lotNumber: string;
   slug: string;
   name: string;
   tagline: string;
@@ -19,21 +22,60 @@ export interface TimelineItem {
   title: string;
   subtitle: string;
   period: string;
-  type: "work" | "education" | "achievements";
+  type: "work" | "education" | "awards";
+}
+
+export interface ExperienceRole {
+  title: string;
+  period: string;
+  duration?: string;
+  description: string[];
+  operations: string[];
+}
+
+export interface ExperienceRecord {
+  id: string;
+  company: string;
+  initial: string;
+  employmentType: string;
+  duration?: string;
+  location: string;
+  roles: ExperienceRole[];
+}
+
+export interface AwardRecord {
+  id: string;
+  title: string;
+  subtitle: string;
+  period: string;
+  initial: string;
+  organization: string;
+  operations: string[];
+}
+
+export interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  year: string;
+  verifyUrl: string;
+  isPlaceholder?: boolean;
+  description?: string;
+  category?: string;
+}
+
+export interface CertificationCategory {
+  name: string;
+  certifications: CertificationItem[];
 }
 
 export interface TechStack {
   name: string;
-  icon: string;
+  color?: string;
+  icon: React.ReactNode;
 }
 
-export interface GalleryImage {
-  src: string;
-  alt: string;
-}
-
-export interface ContactFormData {
+export interface TechCategory {
   name: string;
-  email: string;
-  message: string;
+  stacks: TechStack[];
 }
