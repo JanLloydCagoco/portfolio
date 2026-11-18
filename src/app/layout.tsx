@@ -3,6 +3,8 @@ import { Familjen_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import "@/frontend/styles/globals.css";
 import { ThemeProvider } from "@/frontend/providers/ThemeProvider";
+import { siteUrl } from "@/data/site";
+import ClickFeedbackProvider from "@/frontend/providers/ClickFeedbackProvider";
 import AppShell from "@/frontend/components/layout/AppShell";
 
 const grotesk = Familjen_Grotesk({
@@ -12,17 +14,21 @@ const grotesk = Familjen_Grotesk({
   display: "swap",
 });
 
-const geistPixel = localFont({
+const departureMono = localFont({
   src: "../../public/fonts/DepartureMono-Regular.woff2",
   variable: "--font-pixel",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Jan Lloyd Cagoco — Full-Stack Developer",
   description:
     "Portfolio of Jan Lloyd Cagoco, Full-Stack Developer. Building modern web & mobile applications with AI-driven development.",
+  alternates: { canonical: "/" },
   keywords: [
+    "janlloydcagoco",
+    "Jan Lloyd Cagoco",
     "full-stack developer",
     "web development",
     "mobile apps",
@@ -38,6 +44,8 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer building modern web & mobile apps with AI-driven development.",
     type: "website",
+    url: "/",
+    siteName: "Jan Lloyd Cagoco",
   },
   twitter: { card: "summary_large_image" },
 };
@@ -50,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${geistPixel.variable}`}
+      className={`${grotesk.variable} ${departureMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -73,8 +81,32 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                { "@type": "WebSite", name: "Jan Lloyd Cagoco", alternateName: ["janlloydcagoco", "JanLloydCagoco"], url: siteUrl },
+                {
+                  "@type": "Person",
+                  name: "Jan Lloyd Cagoco",
+                  alternateName: "janlloydcagoco",
+                  jobTitle: "Full-Stack Developer",
+                  url: siteUrl,
+                  sameAs: [
+                    "https://github.com/JanLloydCagoco",
+                    "https://www.linkedin.com/in/jan-lloyd-cagoco-245814388",
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
         <ThemeProvider>
-          <AppShell>{children}</AppShell>
+          <ClickFeedbackProvider>
+            <AppShell>{children}</AppShell>
+          </ClickFeedbackProvider>
         </ThemeProvider>
       </body>
     </html>

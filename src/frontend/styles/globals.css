@@ -1,23 +1,14 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face {
-  font-family: 'Departure Mono';
-  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   --color-primary: var(--text-primary);
   --color-secondary: var(--text-secondary);
   --color-muted: var(--text-muted);
-  --font-pixel: 'Departure Mono', var(--font-pixel), ui-monospace, monospace;
 }
 
 @utility font-pixel {
-  font-family: 'Departure Mono', var(--font-pixel), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
 }
 
 @utility scrollbar-none {
@@ -315,4 +306,40 @@
   ::view-transition-new(root) {
     animation: none !important;
   }
+}
+
+.inquiry-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .inquiry-dialog[open] {
+    animation: inquiry-dialog-in 160ms ease-out;
+  }
+  .inquiry-dialog[open]::backdrop {
+    animation: inquiry-dialog-fade 160ms ease-out;
+  }
+}
+
+@keyframes inquiry-dialog-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); }
+}
+
+@keyframes inquiry-dialog-fade {
+  from { opacity: 0; }
+}
+
+/* Cream arrow cursor (fine pointers only; text fields keep the native I-beam) */
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M6.83 4.55Q5 3 5 5.4L5 17.4Q5 19 6.2 17.94L8.3 16.06Q9.5 15 10.17 16.45L11.83 20.05Q12.5 21.5 13.94 20.81L13.56 20.99Q15 20.3 14.31 18.86L12.69 15.44Q12 14 13.6 14L16.2 14Q18 14 16.63 12.84Z' fill='%23EFE3CC' stroke='%231F1B16' stroke-width='1' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 5 3, auto;
+    --cursor-link: pointer;
+  }
+  html.dark {
+    --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M6.83 4.55Q5 3 5 5.4L5 17.4Q5 19 6.2 17.94L8.3 16.06Q9.5 15 10.17 16.45L11.83 20.05Q12.5 21.5 13.94 20.81L13.56 20.99Q15 20.3 14.31 18.86L12.69 15.44Q12 14 13.6 14L16.2 14Q18 14 16.63 12.84Z' fill='%23F6EEDC' stroke='%23111214' stroke-width='1' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 5 3, auto;
+    --cursor-link: pointer;
+  }
+  html, body { cursor: var(--cursor); }
+  a, button, summary, select, label, [role="button"], .cursor-pointer { cursor: var(--cursor-link); }
+  :disabled, [aria-disabled="true"] { cursor: not-allowed; }
 }

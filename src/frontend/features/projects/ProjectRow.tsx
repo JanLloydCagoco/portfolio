@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Project } from "@/types";
 import { ArrowUpRight01Icon } from "@/frontend/components/icons/NavIcons";
 
@@ -7,13 +8,9 @@ interface ProjectRowProps {
 }
 
 export default function ProjectRow({ project }: ProjectRowProps) {
-  return (
-    <a
-      href={project.websiteUrl}
-      target={project.websiteUrl.startsWith("http") ? "_blank" : undefined}
-      rel="noopener noreferrer"
-      className="group block py-5 sm:py-6"
-    >
+  const external = project.websiteUrl.startsWith("http");
+  const className = "group block py-5 sm:py-6";
+  const content = (
       <div className="flex items-center gap-4">
         <div className="flex-1 min-w-0 flex flex-col gap-1.5 @xl:flex-row @xl:items-center @xl:justify-between @xl:gap-6">
           <h2 className="@xl:shrink-0 text-[20px] font-bold text-primary font-grotesk tracking-tight group-hover:underline">
@@ -43,6 +40,14 @@ export default function ProjectRow({ project }: ProjectRowProps) {
           />
         </div>
       </div>
+  );
+  return external ? (
+    <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className={className}>
+      {content}
     </a>
+  ) : (
+    <Link href={project.websiteUrl} className={className}>
+      {content}
+    </Link>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ArrowRight01Icon } from "@/frontend/components/icons/NavIcons";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 interface FormState {
   name: string;
@@ -88,7 +89,7 @@ export default function InquiryForm() {
         }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
         setSubmit({
@@ -137,6 +138,7 @@ export default function InquiryForm() {
             id="inquiry-name"
             type="text"
             name="name"
+            maxLength={100}
             value={form.name}
             onChange={handleChange}
             placeholder="Your name"
@@ -161,6 +163,7 @@ export default function InquiryForm() {
             id="inquiry-email"
             type="email"
             name="email"
+            maxLength={100}
             value={form.email}
             onChange={handleChange}
             placeholder="name@company.com"
@@ -186,6 +189,7 @@ export default function InquiryForm() {
           id="inquiry-subject"
           type="text"
           name="subject"
+          maxLength={100}
           value={form.subject}
           onChange={handleChange}
           placeholder="Full-stack role, public web application, or mobile app"
@@ -204,6 +208,7 @@ export default function InquiryForm() {
         <textarea
           id="inquiry-message"
           name="message"
+          maxLength={1880}
           value={form.message}
           onChange={handleChange}
           placeholder="Tell me about the project, timeline, or role scope..."
@@ -217,13 +222,8 @@ export default function InquiryForm() {
         )}
       </div>
 
-      {submit.status === "success" && (
-        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[14px] text-primary font-medium">
-          {submit.message}
-        </p>
-      )}
       {submit.status === "error" && (
-        <p className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[14px] text-red-600 dark:text-red-400 font-medium">
+        <p role="alert" className="p-3 rounded-[4px] border border-[var(--border)] bg-[var(--bg-elevated)] text-[14px] text-red-600 dark:text-red-400 font-medium">
           {submit.message}
         </p>
       )}
@@ -238,6 +238,13 @@ export default function InquiryForm() {
           <ArrowRight01Icon size={12} className="shrink-0" />
         </button>
       </div>
+      <p role="status" className="sr-only">
+        {submit.status === "success" ? submit.message : ""}
+      </p>
+      <ConfirmationDialog
+        open={submit.status === "success"}
+        onClose={() => setSubmit({ status: "idle", message: "" })}
+      />
     </form>
   );
 }

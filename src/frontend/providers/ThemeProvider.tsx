@@ -4,9 +4,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 
 export type Theme = "system" | "light" | "dark";
-export type ResolvedTheme = "light" | "dark";
+type ResolvedTheme = "light" | "dark";
 
-export type ThemeTransitionAnchor =
+type ThemeTransitionAnchor =
   | React.MouseEvent<HTMLElement>
   | { clientX: number; clientY: number }
   | { x: number; y: number }

@@ -25,7 +25,7 @@ export interface TimelineItem {
   type: "work" | "education" | "awards";
 }
 
-export interface ExperienceRole {
+interface ExperienceRole {
   title: string;
   period: string;
   duration?: string;
