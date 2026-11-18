@@ -27,6 +27,7 @@ export default function MobileMenu({ open, pathname, onToggle, onClose }: Mobile
 
   // Keep the drawer open until the new route commits, so the old page never shows.
   const go = (e: React.MouseEvent, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (href === pathname) return onClose();
     e.preventDefault();
     clearTimeout(fallback.current);

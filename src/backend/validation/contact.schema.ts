@@ -4,7 +4,7 @@ export interface ContactPayload {
   message: string;
 }
 
-export interface ValidationResult {
+interface ValidationResult {
   valid: boolean;
   error?: string;
   data?: ContactPayload;

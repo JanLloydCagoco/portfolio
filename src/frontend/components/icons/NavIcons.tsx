@@ -3,7 +3,6 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowRight01Icon as HugeArrowRight01Icon,
   ArrowLeft01Icon as HugeArrowLeft01Icon,
-  ArrowDown01Icon as HugeArrowDown01Icon,
   ArrowUpRight01Icon as HugeArrowUpRight01Icon,
   ComputerIcon as HugeComputerIcon,
   Sun01Icon as HugeSun01Icon,
@@ -47,23 +46,6 @@ export function ArrowLeft01Icon({
   return (
     <HugeiconsIcon
       icon={HugeArrowLeft01Icon}
-      size={size}
-      strokeWidth={strokeWidth}
-      className={className}
-      {...props}
-    />
-  );
-}
-
-export function ArrowDown01Icon({
-  size = 13,
-  strokeWidth = 1.8,
-  className = "",
-  ...props
-}: IconProps) {
-  return (
-    <HugeiconsIcon
-      icon={HugeArrowDown01Icon}
       size={size}
       strokeWidth={strokeWidth}
       className={className}
@@ -225,7 +207,7 @@ export function PencilEdit01Icon({
   );
 }
 
-export function CourseraLogo({ className = "w-5 h-5" }: { className?: string }) {
+function CourseraLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -237,7 +219,7 @@ export function CourseraLogo({ className = "w-5 h-5" }: { className?: string }) 
   );
 }
 
-export function GoogleLogo({ className = "w-5 h-5" }: { className?: string }) {
+function GoogleLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -260,7 +242,7 @@ export function GoogleLogo({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-export function MetaLogo({ className = "w-5 h-5" }: { className?: string }) {
+function MetaLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor">
       <path d="M12 7.2c-2.4 0-4.3 1.7-5.5 3.5C5.1 8.6 3.6 7.6 2 7.6 0.9 7.6 0 8.5 0 9.7v5.5c0 1.2 0.9 2.1 2 2.1 1.6 0 3.1-1 4.5-3.1 1.2 1.8 3.1 3.5 5.5 3.5s4.3-1.7 5.5-3.5c1.4 2.1 2.9 3.1 4.5 3.1 1.1 0 2-0.9 2-2.1V9.7c0-1.2-0.9-2.1-2-2.1-1.6 0-3.1 1-4.5 3.1-1.2-1.8-3.1-3.5-5.5-3.5zm-5.1 6.5C5.9 15.2 4.6 16 3.5 16c-.4 0-.8-.3-.8-.8v-4.5c0-.5.4-.8.8-.8 1.1 0 2.4.8 3.4 2.3v1.5zm10.2 0v-1.5c1-1.5 2.3-2.3 3.4-2.3.4 0 .8.3.8.8v4.5c0 .5-.4.8-.8.8-1.1 0-2.4-.8-3.4-2.3z" />
@@ -268,7 +250,7 @@ export function MetaLogo({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-export function AwsLogo({ className = "w-5 h-5" }: { className?: string }) {
+function AwsLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor">
       <path d="M6.864 11.238c-.287 0-.584.09-.806.244-.475.33-.787.842-.787 1.458 0 1.05.748 1.705 1.83 1.705.727 0 1.35-.345 1.73-.836v.736h1.416V9.61h-1.416v.738c-.416-.547-1.127-.905-1.967-.905v.795zm.36 2.378c-.59 0-1.025-.42-1.025-.92 0-.51.435-.918 1.025-.918.57 0 1.002.408 1.002.918 0 .5-.432.92-1.002.92zm6.602-3.935h-1.464l-1.34 4.81h1.416l.302-1.164h1.674l.302 1.164h1.442l-1.332-4.81zm-1.012 2.822.56-2.278.56 2.278h-1.12zm6.654-1.78c-.44-.22-1.024-.34-1.63-.34-1.416 0-2.235.83-2.235 2.015 0 1.22.84 1.815 1.93 2.035.795.16 1.108.41 1.108.73 0 .42-.41.65-1.03.65-.63 0-1.3-.23-1.8-.54l-.42 1.03c.6.43 1.45.65 2.27.65 1.54 0 2.45-.75 2.45-2.02 0-1.13-.72-1.81-1.89-2.02-.8-.15-1.15-.39-1.15-.72 0-.34.33-.55.88-.55.54 0 1.12.18 1.55.43l.47-.94zm-16.94 9.07c4.68 3.19 10.82 3.39 16.32.58.33-.17.69.05.81.35.12.3-.04.66-.35.82-5.83 2.97-12.39 2.76-17.41-.63-.36-.25-.39-.76-.08-1.06.2-.2.5-.24.71-.06zm17.39-1.71c.36.47.96 1.25.96 1.75 0 .2-.1.35-.3.45-.6.3-1.5.15-2.2-.25-.2-.1-.25-.35-.15-.55.1-.2.35-.25.55-.15.45.25.95.3 1.25.1-.15-.35-.55-.95-.8-1.25-.15-.2-.1-.45.1-.6.2-.15.45-.1.59.1z" />
@@ -276,7 +258,7 @@ export function AwsLogo({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-export function MicrosoftLogo({ className = "w-5 h-5" }: { className?: string }) {
+function MicrosoftLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="2" width="9.5" height="9.5" fill="#F25022" />

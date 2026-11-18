@@ -26,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     label: "Stack",
     href: "/stack",
-    isActive: (pathname) => pathname.startsWith("/stack") || pathname.startsWith("/tech"),
+    isActive: (pathname) => pathname.startsWith("/stack"),
   },
   {
     label: "Certifications",
@@ -40,6 +40,13 @@ export default function AppSidebar() {
   // Optimistic: highlight the clicked tab immediately, before the route commits.
   const [pending, setPending] = useState<{ from: string; to: string } | null>(null);
   const pathname = pending && pending.from === realPathname ? pending.to : realPathname;
+
+  // Route committed: drop the optimistic highlight (reset during render, no extra effect pass).
+  const [seen, setSeen] = useState(realPathname);
+  if (seen !== realPathname) {
+    setSeen(realPathname);
+    setPending(null);
+  }
 
   return (
     <>

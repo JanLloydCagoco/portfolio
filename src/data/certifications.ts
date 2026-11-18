@@ -20,7 +20,7 @@ export const certificationCategories: CertificationCategory[] = [
   },
 ];
 
-export const allCertifications: CertificationItem[] = certificationCategories.flatMap(
+const allCertifications: CertificationItem[] = certificationCategories.flatMap(
   (category) => category.certifications
 );
 

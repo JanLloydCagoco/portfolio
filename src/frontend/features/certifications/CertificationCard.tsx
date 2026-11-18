@@ -4,7 +4,7 @@ import React from "react";
 import { CertificationItem } from "@/types";
 import { ArrowUpRight01Icon, getIssuerIcon } from "@/frontend/components/icons/NavIcons";
 
-export interface CertificationCardProps {
+interface CertificationCardProps {
   cert: CertificationItem;
   variant?: "standalone" | "stack";
   isCenter?: boolean;
