@@ -25,7 +25,10 @@ export const metadata: Metadata = {
   title: "Jan Lloyd Cagoco — Full-Stack Developer",
   description:
     "Portfolio of Jan Lloyd Cagoco, Full-Stack Developer. Building modern web & mobile applications with AI-driven development.",
+  alternates: { canonical: "/" },
   keywords: [
+    "janlloydcagoco",
+    "Jan Lloyd Cagoco",
     "full-stack developer",
     "web development",
     "mobile apps",
@@ -41,6 +44,8 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer building modern web & mobile apps with AI-driven development.",
     type: "website",
+    url: "/",
+    siteName: "Jan Lloyd Cagoco",
   },
   twitter: { card: "summary_large_image" },
 };
@@ -76,6 +81,28 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                { "@type": "WebSite", name: "Jan Lloyd Cagoco", alternateName: ["janlloydcagoco", "JanLloydCagoco"], url: siteUrl },
+                {
+                  "@type": "Person",
+                  name: "Jan Lloyd Cagoco",
+                  alternateName: "janlloydcagoco",
+                  jobTitle: "Full-Stack Developer",
+                  url: siteUrl,
+                  sameAs: [
+                    "https://github.com/JanLloydCagoco",
+                    "https://www.linkedin.com/in/jan-lloyd-cagoco-245814388",
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
         <ThemeProvider>
           <ClickFeedbackProvider>
             <AppShell>{children}</AppShell>
